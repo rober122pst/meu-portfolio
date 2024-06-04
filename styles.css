@@ -57,6 +57,8 @@ body {
     height: 2px;
     background: var(--color-white);
     margin: 8px;
+    transition: all .3s ease;
+    position: relative;
 }
 
 .header-title {
@@ -143,12 +145,24 @@ body {
         color: var(--color-white);
     }
 
-    .navbar.active {
+    .navbar-geral.active .navbar {
         width: 50%;
         visibility: visible;
         overflow-y: auto;
     }
 
+    .navbar-geral.active .burguer div:nth-child(2) {
+      transform: rotate(360deg);
+      background: transparent;
+    }
+    .navbar-geral.active .burguer div:nth-child(1) {
+      transform: rotate(135deg);
+      top: 10px;
+    }
+    .navbar-geral.active .burguer div:nth-child(3) {
+      transform: rotate(-135deg);
+      top: -10px;
+    }
 }
 
 @media (min-width: 1840px) {
@@ -260,7 +274,7 @@ body {
     flex-direction: row;
 }
 
-.contact ul li {
+.contact li {
     display: flex;
     align-items: center;
 
@@ -272,17 +286,82 @@ body {
     list-style: none;
 }
 
-.contact ul li img{
+.contact li img{
     width: 25px;
     height: auto;
 
     transition: transform .3s ease;
 }
 
-.contact ul li img:hover{
+.contact li img:hover{
     transform: scale(1.2);
     cursor: pointer;
 }
+
+@media (max-width: 376px) {
+  .person-name {
+    padding: 0px 10px;
+  }
+
+  .contact-content {
+    padding: 0px 10px;
+  }
+
+  .contact-content h3 {
+    margin-left: 10px;
+  }
+
+  .contact {
+    margin-top: 10px;
+  }
+
+  .contact li {
+    margin: 0px;
+  }
+
+  .contact li img {
+    width: calc(3.5vw + 0.5rem);
+  }
+}
+
+
+/* sm -> md */
+@media (min-width: 377px) and (max-width: 768px) {
+  .person-name {
+    padding: 0px 10px;
+  }
+
+  .stack-content {
+    padding: 0px 15px;
+  }
+
+  .contact-content h3 {
+    margin-left: 10px;
+  }
+
+  .contact {
+    margin-top: 10px;
+  }
+
+  .contact li {
+    margin: 0px;
+  }
+
+  .contact li img {
+    width: calc(3.2vw + 0.5rem);
+  }
+}
+
+@media (max-width: 1000px) and (orientation: landscape) {
+  .contact li div:hover::after {
+    font-size: 1.3vw;
+  }
+
+  .contact-content h3 {
+    font-size: 1vw;
+  }
+}
+
 
 .person-background {
     height: 100vh;
@@ -341,19 +420,41 @@ body {
 }
 
 .mode img {
-    width: 40px;
-    height: 40px;
+    width: calc(2vw + 0.8rem);
+    height: calc(2vw + 0.8rem);
 
-    margin: 10px;
+    margin: calc(0.8vw + 0.8rem);
     filter: brightness(.8);
     transition: all .3s ease;
 }
 
 .mode img:hover {
-    transform: scale(1.2);
+    transform: scale(1.15);
     filter: brightness(1);
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  .mode a img {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+
+@media (max-width: 1440px) and (orientation: landscape) {
+  .profile-photo {
+    width: 45vh;
+  }
+}
+
+@media (min-width: 1440px) {
+  .profile-photo {
+    width: 25vw;
+    max-width: initial;
+  }
+}
+
 /* About */
 #about {
     height: auto;
