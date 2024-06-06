@@ -4,24 +4,16 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
-    outline: none;
 }
 
 :root {
-    --color-white: #fff;
-    --color-black: #0c0c0c;
-    --color-pink: #d12f7a;
-    --color-blue: #073fcc;
-    --color-purple: #5f01ac;
-}
-
-.art-mode:root {
-  --color-white: #6da;
+  --color-white: #fff;
   --color-black: #0c0c0c;
   --color-pink: #d12f7a;
   --color-blue: #073fcc;
   --color-purple: #5f01ac;
 }
+
 div {
     display: block;
     /* Outros estilos que podem estar interferindo */
@@ -37,6 +29,20 @@ html {
 body {
     font-family: "Poppins", sans-serif;
     font-weight: 400;
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateX(-100%);
+  filter: blur(15px);
+  transition: all 2s;
+}
+
+.section-show {
+  opacity: 1;
+  transform: translateX(0);
+  filter: blur(0px);
+  transition: all 2s;
 }
 
 #header {
@@ -218,7 +224,7 @@ body {
     background: var(--color-black);
 }
 
-.person-content div h1 {
+.person-name h1 {
     padding: 0px 4px;
     color: transparent;
 
@@ -231,7 +237,7 @@ body {
     animation: written_text .5s ease forwards;
 }
 
-.person-content div h1 span {
+.person-name h1 span {
     position: absolute;
     top: 0;
     left: 0;
@@ -244,25 +250,26 @@ body {
     animation-delay: .5s;
 }
 
-.person-content div h1:nth-child(1) span {
+.person-name h1:nth-child(1) span {
     animation-delay: .5s;
 }
-.person-content div h1:nth-child(2) span {
+.person-name h1:nth-child(2) span {
     animation-delay: 1.5s;
 }
-.person-content div h1:nth-child(3) span {
+.person-name h1:nth-child(3) span {
     animation-delay: 2.5s;
 }
 
-.person-content div h1:nth-child(1) {
+.person-name h1:nth-child(1) {
     animation-delay: 1s;
 }
-.person-content div h1:nth-child(2) {
+.person-name h1:nth-child(2) {
     animation-delay: 2s;
 }
-.person-content div h1:nth-child(3) {
-    animation: written_text_name .5s ease forwards;
+.person-name h1:nth-child(3) {
+    animation: written_text_name .5s ease;
     animation-delay: 3s;
+    transition: color .5s ease;
 }
 
 .person-name {
@@ -385,11 +392,7 @@ body {
 
     z-index: 1;
 
-    transition: background-image .3s ease;
-}
-
-.art-mode .person-background {
-  background-image: url(./img/games.gif);
+    transition: background-image .5s ease;
 }
 
 .person-background::after {
@@ -410,6 +413,7 @@ body {
 }
 
 .wrapper-profile-photo {
+    /* position: relative; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -418,15 +422,22 @@ body {
     margin: 20px 15px;
 
     border-radius: 50%;
+    
     background: 
         radial-gradient(rgba(0,0,0,0.15) 60%, transparent 0),
         radial-gradient(#000 68%, transparent 0),
-        linear-gradient(to top right, var(--color-purple) 0%, #ff1493 100%);
+        linear-gradient(to top right, var(--color-purple) 0%, var(--color-pink) 100%);
+    
 }
 
 .profile-photo {
-    width: 100%;
+    width: calc(10vw + 10rem);
+    height: calc(10vw + 10rem);
     border-radius: 50%;
+    background-image: url(./img/f918bc7ddb4658dcf4ce70a21b3fd31d.jpg);
+    background-size: cover;
+    background-position: center;
+    transition: background-image .6s ease;
 }
 
 .mode img {
@@ -454,12 +465,21 @@ body {
 
 @media (max-width: 1440px) and (orientation: landscape) {
   .profile-photo {
+    height: 45vh;
     width: 45vh;
+  }
+}
+
+@media (max-width: 375px) {
+  .profile-photo {
+    height: 15vh;
+    width: 15vh;
   }
 }
 
 @media (min-width: 1440px) {
   .profile-photo {
+    height: 25vw;
     width: 25vw;
     max-width: initial;
   }
@@ -552,7 +572,7 @@ body {
     border-radius: 4px;
   
     color: var(--color-black);
-    background: var(--color-blue);
+    background: var(--color-pink);
   }
   
   .box-about h4 {
@@ -564,7 +584,7 @@ body {
     display: inline;
     padding: 2px 4px;
   
-    color: var(--color-blue);
+    color: var(--color-pink);
   }
   
   .button-cta {
@@ -736,6 +756,8 @@ body {
     border-radius: 20px 20px 0 0;
 
     z-index: -1;
+
+    transition: background .3s ease;
 }
 
 /* .content-project {
@@ -1041,7 +1063,7 @@ body {
   
   .contact-icon i {
     font-size: 2rem;
-    color: var(--color-blue);
+    color: var(--color-pink);
   }
   
   .contact-info span {
@@ -1063,7 +1085,7 @@ body {
   
   .contact-info a:hover {
     transition: color .3s ease;
-    color: var(--color-blue);
+    color: var(--color-pink);
   }
   
   
@@ -1133,14 +1155,19 @@ body {
   
 
 @keyframes written_text {
-    100% {
+    /* 100% {
         color: var(--color-white);
-    }
+    } */
+    from { color: transparent; }
+    to { color: var(--color-white); }
 }
 @keyframes written_text_name {
-    100% {
+    /* 100% {
         color: var(--color-pink);
-    }
+        transition: all .3s ease;
+    } */
+    from { color: transparent; }
+    to { color: var(--color-pink); }
 }
 @keyframes written_text_box {
     50% {

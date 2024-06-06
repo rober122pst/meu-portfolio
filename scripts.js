@@ -1,4 +1,7 @@
 
+const artMode = document.querySelector('.art-mode');
+
+
 let swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
 
 function createSwiper(container, pagination, nextButton, prevButton) {
@@ -58,15 +61,25 @@ const html = document.querySelector('html');
 
 function toggleMode(event) {
     const buttonClicked = event.target;
+    const aboutText = document.querySelector('.text-about');
 
     if (buttonClicked === btnArt) {
         html.classList.add('art-mode');
         html.classList.remove('programmer-mode');
         html.classList.remove('cube-mode');
+
+        aboutText.innerHTML = `
+        Sou um Artista de
+        <p>Pixel Art e Desenho Tradicional</p>
+        `;
     } else if (buttonClicked === btnProgrammer) {
         html.classList.add('programmer-mode');
         html.classList.remove('art-mode');
         html.classList.remove('cube-mode');
+        aboutText.innerHTML = `
+        Sou um Desenvolvedor de Jogos com esperiências em
+        <p>Java, C#, GML, Unity e Game Maker</p>
+        `;
     } else if (buttonClicked === btn3d) {
         html.classList.add('cube-mode');
         html.classList.remove('art-mode');
@@ -77,3 +90,35 @@ function toggleMode(event) {
 btnArt.addEventListener('click', toggleMode);
 btnProgrammer.addEventListener('click', toggleMode);
 btn3d.addEventListener('click', toggleMode); 
+
+const _name = document.querySelector('.name');
+
+function nameAnim() {
+    _name.style.color = 'var(--color-pink)'
+}
+_name.addEventListener('animationend', nameAnim); 
+
+
+// FAZER APARECER QUANDO SCROLLAR
+const sections = document.querySelectorAll('.section-hidden');
+
+const options = {
+    threshold: 0.1
+}
+
+// Cria o Intersection Observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('section-show');
+        }else {
+            entry.target.classList.remove('section-show');
+        }
+    });
+    }, options);
+
+// Observa cada seção
+sections.forEach( (element) => {
+    observer.observe(element);
+});
+
