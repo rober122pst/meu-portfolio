@@ -1,17 +1,65 @@
 .art-mode:root {
-    --color-pink: #073fcc;
-    --color-purple: #201777;
+    --color-pink: #004051;
+    --color-purple: #001836;
 }
 
 .cube-mode:root {
-    --color-pink: #225918;
-    --color-purple: #103822;
+    --color-pink: #174a1b;
+    --color-purple: #002219;
 }
+
+.programmer-mode .mode i:nth-child(1) {
+    font-size: calc(1.5vw + 0.8rem);
+    color: var(--color-pink);
+
+    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
+    transform: translateY(-20px);
+    filter: brightness(1);
+    transition: all .3s ease;
+}
+
+.art-mode .mode i:nth-child(2) {
+    font-size: calc(1.5vw + 0.8rem);
+    color: var(--color-pink);
+
+    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
+    transform: translateY(-20px);
+    filter: brightness(1);
+    transition: all .3s ease;
+}
+
+.cube-mode .mode i:nth-child(3) {
+    font-size: calc(1.5vw + 0.8rem);
+    color: var(--color-pink);
+
+    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
+    transform: translateY(-20px);
+    filter: brightness(1);
+    transition: all .3s ease;
+}
+
+/*******************************************************/
 
 .art-mode .profile-photo {
     background-image: url(./img/ac0f419e977af681516e00829c5393ee.jpg);
+}
+.art-mode .person-background{
+    background-image: url(./img/games.gif);
+}
+.art-mode .background-about{
+    background-image: url(./img/LaLaLand.png);
+    background-position: top right;
 }
 
 .cube-mode .profile-photo {
     background-image: url(./img/fotoperfil.jpg);
 }
+.cube-mode .person-background{
+    background-image: url(./img/Dido1.gif);
+}
+.cube-mode .background-about{
+    background-image: url(./img/mulasemcabeca.png);
+    background-position: top center;
+}
+
+

@@ -6,7 +6,7 @@
     <title>Rober's Portfolio</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
     <link rel="stylesheet" href="mode.css">
     <link rel="stylesheet" href="styles.css">
@@ -42,7 +42,6 @@
                         <a href="#contacts">Contatos</a>
                     </li>
                 </ul>
-                <h3>João Oliveira © 2024</h3>
             </nav>
         </div>
     </section>
@@ -83,13 +82,12 @@
         </div>
         <div class="person-background">
             <div class="wrapper-profile-photo">
-                <!-- <img class="profile-photo" src="./img/f918bc7ddb4658dcf4ce70a21b3fd31d.jpg" alt="foto-rober"> -->
                 <div class="profile-photo" alt="foto-rober"></div>
             </div>
             <div class="mode">
-                <img class="programmer-btn" src="./svg/programmer.svg" alt="programmer-mode">
-                <img class="art-btn" src="./svg/desenhista.svg" alt="design-mode">
-                <img class="cube-btn" src="./svg/cube.svg" alt="3D-design-mode">
+                <i class="programmer-btn fa-solid fa-laptop-code" alt="programmer-mode"></i>
+                <i class="art-btn fa-solid fa-paintbrush" src="./svg/desenhista.svg" alt="design-mode"></i>
+                <i class="cube-btn fa-solid fa-cube" src="./svg/cube.svg" alt="3D-design-mode"></i>
             </div>
         </div>
     </section>
@@ -98,33 +96,32 @@
     <section id="about">
         <div class="background-about">
             <div class="img-wrapper">
-                <img src="./img/games.gif" alt="img2-games">
             </div>
         </div>
 
-        <div class="box-about section-hidden">
+        <div class="box-about">
             <div class="section-subtitle">
-                <h2>
+                <h2 class="section-hidden">
                     <p>💻</p>
                     <p><span>Desenvolvedor</span> de Jogos</p>
                 </h2>
             </div>
 
-            <h3 class="text-about">
+            <h3 class="text-about section-hidden">
                 Sou um Desenvolvedor de Jogos com esperiências em
                 <p>Java, C#, GML, Unity e Game Maker</p>
             </h3>
 
-            <h4>
-                Era uma vez, em uma pequena cidade esquecida pelo tempo, um grupo de amigos que se aventurava nas profundezas de uma floresta sombria. O sol já tinha se despedido, deixando apenas um rastro de luz alaranjada no horizonte, quando Lucas, Júlia, Miguel e Ana decidiram explorar as ruínas da velha mansão do Sr. Whitaker.               
+            <h4 class="section-hidden">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corrupti recusandae autem cum. Fugit, et? Tempora esse sequi molestias eos maxime quos quas odio sit doloremque vero quo, est iusto.
             </h4>
 
-            <h4>
+            <h4 class="section-hidden">
                 Abaixo está o <p>currículo</p> para download.
             </h4>
 
-            <div class="button-cta">
-                <button>Currículo</button>
+            <div class="button-cta section-hidden">
+                <a>Currículo</a>
             </div>
         </div>
     </section>
@@ -135,9 +132,31 @@
             <h2>PROJETOS 🧩</h2>
         </div>
 
-        <div class="swiper mySwiper section-hidden">
+        <div class="swiper mySwiper">
             <div class="swiper-wrapper">
                 <!-- content-project -->
+                <div class="swiper-slide card-project section-hidden">
+                    <div class="image-project">
+                        <a href="/">
+                            <img src="./img/projeto.jpeg" alt="img-projeto">
+                        </a>
+                    </div>
+                    <span>Primeiro projeto</span>
+                    <p>Este é um projeto teste para o site.</p>
+
+                    <div class="cta-project">
+                        <a href="/">
+                            Codigo
+                            <i class="fa-brands fa-github"></i>
+                        </a>
+                        <a href="/">
+                            Site
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </a>
+                    </div>
+
+                </div>
+                
                 <div class="swiper-slide card-project">
                     <div class="image-project">
                         <a href="/">
@@ -159,69 +178,7 @@
                     </div>
 
                 </div>
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projeto.jpeg" alt="img-projeto">
-                        </a>
-                    </div>
-                    <span>Primeiro projeto</span>
-                    <p>Este é um projeto teste para o site.</p>
 
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projeto.jpeg" alt="img-projeto">
-                        </a>
-                    </div>
-                    <span>Primeiro projeto</span>
-                    <p>Este é um projeto teste para o site.</p>
-
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
-
-                </div>
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projeto.jpeg" alt="img-projeto">
-                        </a>
-                    </div>
-                    <span>Primeiro projeto</span>
-                    <p>Este é um projeto teste para o site.</p>
-
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
-
-                </div>
                 <div class="swiper-slide card-project">
                     <div class="image-project">
                         <a href="/">

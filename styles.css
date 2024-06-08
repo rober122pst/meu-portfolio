@@ -9,9 +9,8 @@
 :root {
   --color-white: #fff;
   --color-black: #0c0c0c;
-  --color-pink: #d12f7a;
-  --color-blue: #073fcc;
-  --color-purple: #5f01ac;
+  --color-pink: #c32454;
+  --color-purple: #701769;
 }
 
 div {
@@ -35,7 +34,6 @@ body {
   opacity: 0;
   transform: translateX(-100%);
   filter: blur(15px);
-  transition: all 2s;
 }
 
 .section-show {
@@ -44,6 +42,24 @@ body {
   filter: blur(0px);
   transition: all 2s;
 }
+
+/*****DELAY DE TRANSIÇÕES*****/
+.box-about :nth-child(1).section-show{
+  transition-delay: 100ms;
+}
+.box-about :nth-child(2).section-show{
+  transition-delay: 200ms;
+}
+.box-about :nth-child(3).section-show{
+  transition-delay: 400ms;
+}
+.box-about :nth-child(4).section-show{
+  transition-delay: 600ms;
+}
+.box-about :nth-child(5).section-show{
+  transition-delay: 800ms;
+}
+/*****************************/
 
 #header {
   display: flex;
@@ -440,26 +456,19 @@ body {
     transition: background-image .6s ease;
 }
 
-.mode img {
-    width: calc(2vw + 0.8rem);
-    height: calc(2vw + 0.8rem);
+.mode i {
+    font-size: calc(1.5vw + 0.8rem);
+    color: var(--color-white);
 
-    margin: calc(0.8vw + 0.8rem);
+    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     filter: brightness(.8);
     transition: all .3s ease;
 }
 
-.mode img:hover {
+.mode i:hover {
     transform: scale(1.15);
     filter: brightness(1);
     cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .mode a img {
-    width: 30px;
-    height: 30px;
-  }
 }
 
 
@@ -496,23 +505,26 @@ body {
   }
   
   .background-about {
-    width: 50%;
     height: 100vh;
-  
+    width: 50%;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+    flex-direction: column;
+
+
+    background-image: url(./img/youlooklonely.png);
+    background-size: cover;
+    background-position: top right;
+
+    transition: background-image .5s ease;
   
   }
   
   .img-wrapper {
-    height: 100%;
-    width: 100%;
-  
-    position: relative;
-  }
-  
-  .img-wrapper::after {
     content: "";
     position: absolute;
     top: 0;
@@ -526,13 +538,6 @@ body {
       linear-gradient(.5turn, transparent 30%, var(--color-black)),
       linear-gradient(1turn, transparent 65%, var(--color-black));
   
-  }
-  
-  .img-wrapper img {
-    height: 100%;
-    width: 100%;
-  
-    object-fit: cover;
   }
   
   .box-about {
@@ -615,10 +620,14 @@ body {
 }
 
 .button-cta a:hover {
-    transition: all .3s ease;
+    transition: filter .3s ease;
     filter: brightness(.8);
 }
-
+@media (max-width: 1440px) and (orientation: portrait) {
+  .background-about {
+    background-position: top center;
+  }
+}
 /* sm */
 @media (max-width: 375px) {
     .box-about {
