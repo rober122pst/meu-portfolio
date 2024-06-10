@@ -2,7 +2,7 @@
 const artMode = document.querySelector('.art-mode');
 
 
-/*let swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
+
 
 function createSwiper(container, pagination, nextButton, prevButton) {
     return new Swiper(container, {
@@ -17,7 +17,9 @@ function createSwiper(container, pagination, nextButton, prevButton) {
         prevEl: prevButton,
         },
     });
-}*/
+}
+
+let swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
 
 function handleWidth() {
     let getWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -34,31 +36,51 @@ function handleWidth() {
     return slideShow;
 }
 
+// Função para recriar o Swiper
+function updateSwiper() {
+    if (swiper) {
+        swiper.destroy(true, true);
+    }
+    swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
+}
+
+// Adiciona um listener para o evento resize
+window.addEventListener('resize', function() {
+    updateSwiper();
+});
+
+// Executa a função uma vez ao carregar a página
+document.addEventListener('DOMContentLoaded', function() {
+    updateSwiper();
+});
+
 let header = document.getElementById('header')
 
 window.addEventListener('scroll', () => {
-    if(window.scrollY >= 80){
-        header.style.background = '#191919'
-    }else {
-        header.style.background = 'transparent'
-    }
+    navbarColor();
 })
 
-if(scrollY >= 80){
-    header.style.background = '#191919'
-}else {
-    header.style.background = 'transparent'
+function navbarColor() {
+    if(window.scrollY >= 80){
+        header.style.background = '#191919';
+        header.style.boxShadow = '0px 5px 9px 0px #000';
+    }else {
+        header.style.background = 'transparent';
+        header.style.boxShadow = '0px 0px 0px 0px transparent';
+    }
 }
 
 const btnMobile = document.querySelector('.burguer');
 
 function toggleMenu() {
     const nav = document.querySelector('.navbar-geral');
-    if(header.style.background === 'transparent' || scrollY >= 80) {
+    if(header.style.background === 'transparent' || window.scrollY >= 80) {
         header.style.background = '#191919'
+        header.style.boxShadow = '0px 5px 9px 0px #000';
         console.log('Fechou');
     }else {
         header.style.background = 'transparent'
+        header.style.boxShadow = '0px 0px 0px 0px transparent';
     }
     nav.classList.toggle('active');
 }
@@ -68,7 +90,7 @@ btnMobile.addEventListener('click', toggleMenu);
 const _name = document.querySelector('.name');
 
 function nameAnim() {
-    _name.style.color = 'var(--color-pink)'
+    _name.style.color = 'var(--color-main)'
 }
 _name.addEventListener('animationend', nameAnim); 
 
@@ -80,7 +102,7 @@ function initialObserver() {
     const options = {
         root: null,
         rootMargin: '0px',
-        threshold: 0.3
+        threshold: 0.2
     }
 
     // Cria o Intersection Observer
@@ -95,7 +117,23 @@ function initialObserver() {
         });
     }, options);
     
+    // Cria o Intersection Observer
+    const observerProjects = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-show');
+                entry.target.classList.remove('section-hidden');              
+                hidden = true;
+                observer.unobserve(entry.target);
+            }
+        });
+    });
     
+    let projects = document.querySelectorAll('.swiper');
+
+    projects.forEach( (element) => {
+        observerProjects.observe(element);
+    });
     
     // Observa cada seção
     sections.forEach( (element) => {
