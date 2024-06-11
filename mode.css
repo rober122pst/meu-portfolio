@@ -11,11 +11,11 @@
 .programmer-mode .mode i:nth-child(1) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
-    text-shadow: 
+    /* text-shadow: 
     -1px -1px 0 #0c0c0c,  
      1px -1px 0 #0c0c0c,
     -1px  1px 0 #0c0c0c,
-     1px  1px 0 #0c0c0c;
+     1px  1px 0 #0c0c0c; */
 
     margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     transform: translateY(-20px);
@@ -26,11 +26,11 @@
 .art-mode .mode i:nth-child(2) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
-    text-shadow: 
+    /* text-shadow: 
     -1px -1px 0 #0c0c0c,  
      1px -1px 0 #0c0c0c,
     -1px  1px 0 #0c0c0c,
-     1px  1px 0 #0c0c0c;
+     1px  1px 0 #0c0c0c; */
 
     margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     transform: translateY(-20px);
@@ -41,11 +41,11 @@
 .cube-mode .mode i:nth-child(3) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
-    text-shadow: 
+    /* text-shadow: 
     -1px -1px 0 #0c0c0c,  
      1px -1px 0 #0c0c0c,
     -1px  1px 0 #0c0c0c,
-     1px  1px 0 #0c0c0c;
+     1px  1px 0 #0c0c0c; */
 
     margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     transform: translateY(-20px);
@@ -59,21 +59,19 @@
     background-image: url(./img/ac0f419e977af681516e00829c5393ee.jpg);
 }
 .art-mode .person-background{
-    background-image: url(./img/games.gif);
+    background-image: url(./img/drive1.png);
 }
 .art-mode .background-about{
-    background-image: url(./img/LaLaLand.png);
-    background-position: top right;
+    background-image: url(./img/youlooklonely.png);
 }
 
 .cube-mode .profile-photo {
     background-image: url(./img/fotoperfil.jpg);
 }
 .cube-mode .person-background{
-    background-image: url(./img/Dido1.gif);
+    background-image: url(./img/person-green-bkg.gif);
 }
 .cube-mode .background-about{
-    background-image: url(./img/mulasemcabeca.png);
-    background-position: top center;
+    background-image: url(./img/green-bkg.jpg);
 }
 
