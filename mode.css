@@ -1,21 +1,18 @@
 .art-mode:root {
     --color-main: #c32454;
     --color-second: #701769;
+    --color-main-rgb: rgba(195, 36, 84, .5);
 }
 
 .cube-mode:root {
     --color-main: #174a1b;
     --color-second: #002219;
+    --color-main-rgb: rgba(23, 74, 27, .5);
 }
 
 .programmer-mode .mode i:nth-child(1) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
-    /* text-shadow: 
-    -1px -1px 0 #0c0c0c,  
-     1px -1px 0 #0c0c0c,
-    -1px  1px 0 #0c0c0c,
-     1px  1px 0 #0c0c0c; */
 
     margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     transform: translateY(-20px);
@@ -26,11 +23,6 @@
 .art-mode .mode i:nth-child(2) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
-    /* text-shadow: 
-    -1px -1px 0 #0c0c0c,  
-     1px -1px 0 #0c0c0c,
-    -1px  1px 0 #0c0c0c,
-     1px  1px 0 #0c0c0c; */
 
     margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
     transform: translateY(-20px);

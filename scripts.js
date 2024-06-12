@@ -154,6 +154,10 @@ const html = document.querySelector('html');
 
 var hidden = false;
 let currentMode = btnProgrammer;
+
+var softSkillsBtn = document.querySelector('.fa-arrow-right');
+var skillsBtn = document.querySelector('.fa-arrow-left');
+
 function toggleMode(event) {
     const buttonClicked = event.target;
 
@@ -314,6 +318,10 @@ function toggleMode(event) {
                     <li><svg viewBox="0 0 24 24" id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" fill="#000000" stroke="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><defs><style>.cls-1{fill:none;stroke:#ffffff;stroke-miterlimit:10;stroke-width:1.95px;}</style></defs><polygon class="cls-1" points="12 18.63 18.84 15.21 18.84 7.68 12 4.32 5.16 7.68 5.16 15.21 12 18.63"></polygon><polyline class="cls-1" points="5.16 8.09 5.19 8.09 12 11.46 12 18.84"></polyline><polyline class="cls-1" points="12 18.84 12 11.46 18.81 8.09 18.84 8.09"></polyline><polyline class="cls-1" points="18.84 8.09 18.81 8.09 12 11.46 5.19 8.09 5.16 8.09"></polyline><polyline class="cls-1" points="1.25 6.14 1.25 1.25 6.14 1.25"></polyline><polyline class="cls-1" points="6.14 22.75 1.25 22.75 1.25 17.86"></polyline><polyline class="cls-1" points="22.75 17.86 22.75 22.75 17.86 22.75"></polyline><polyline class="cls-1" points="17.86 1.25 22.75 1.25 22.75 6.14"></polyline></g></svg></li>
             </div>         
             <div class="skills-container section-hidden">
+                    <h2>Design de Interiores</h2>
+                    <li><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50"><path d="M 25 0 C 24.8085 -1.8503717e-17 24.6045 0.04625 24.4375 0.15625 L 0.4375 15.96875 C 0.1565 16.15375 0 16.4765 0 16.8125 L 0 23.3125 C 0 23.6805 0.20725 24.0135 0.53125 24.1875 C 0.85525 24.3615 1.2545 24.329 1.5625 24.125 L 25 8.59375 L 48.4375 24.125 C 48.6045 24.236 48.807 24.3125 49 24.3125 C 49.162 24.3125 49.32075 24.2665 49.46875 24.1875 C 49.79375 24.0135 50 23.6805 50 23.3125 L 50 16.8125 C 50 16.4755 49.8435 16.15275 49.5625 15.96875 L 25.5625 0.15625 C 25.3955 0.04625 25.1915 1.8503717e-17 25 0 z M 25 11 L 3 25.5625 L 3 49 C 3 49.553 3.448 50 4 50 L 46 50 C 46.553 50 47 49.553 47 49 L 47 25.5625 L 25 11 z M 19.5 23 L 30.5 23 C 33.337 23 35.71775 25.145 35.96875 28 C 33.17775 28.014 31 30.205 31 33 C 31 33.897 30.897 34 30 34 L 20 34 C 19.103 34 19 33.897 19 33 C 19 30.205 16.82225 28.014 14.03125 28 C 14.27925 25.227 16.573 23 19.5 23 z M 14 30 C 15.7 30 17 31.3 17 33 C 17 35 18 36 20 36 L 30 36 C 32 36 33 35 33 33 C 33 31.3 34.3 30 36 30 C 37.7 30 39 31.3 39 33 C 39 34.7 37.7 36 36 36 L 36 37.6875 C 36 38.5985 35.613 39.42925 35 40.03125 L 35 43 C 35 43.6 34.50625 44.09375 33.90625 44.09375 L 32.09375 44.09375 C 31.49375 44.09375 31 43.6 31 43 L 31 41 L 19 41 L 19 43 C 19 43.6 18.50625 44.09375 17.90625 44.09375 L 16.09375 44.09375 C 15.49375 44.09375 15 43.6 15 43 L 15 40.03125 C 14.387 39.42925 14 38.5985 14 37.6875 L 14 36 C 12.3 36 11 34.7 11 33 C 11 31.3 12.3 30 14 30 z"/></svg></li>
+            </div>         
+            <div class="skills-container section-hidden">
                     <h2>Animação 3D (Basico)</h2>
                     <li><svg fill="#ffffff" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M22,13v8a1,1,0,0,1-1,1H13a1,1,0,0,1-1-1V13a1,1,0,0,1,1-1h8A1,1,0,0,1,22,13ZM7,6A1,1,0,0,0,6,7v9a1,1,0,0,0,1,1h3V10.5a.5.5,0,0,1,.5-.5H17V7a1,1,0,0,0-1-1ZM3,13H4V4.5A.5.5,0,0,1,4.5,4H13V3a1,1,0,0,0-1-1H3A1,1,0,0,0,2,3v9A1,1,0,0,0,3,13Z"></path></g></svg></li>
             </div>         
@@ -340,10 +348,21 @@ function toggleMode(event) {
         });
         initialObserver();
     }
+
+    // softSkillsBtn = document.querySelector('.skills-content i');
+    // skillsBtn = document.querySelector('.others-skills-content i');
 }
 
 btnArt.addEventListener('click', toggleMode);
 btnProgrammer.addEventListener('click', toggleMode);
 btn3d.addEventListener('click', toggleMode); 
+///////////////////////////////////////////////////////////////////
 
 
+function softSkill() {
+    let skillsCont = document.querySelector('.skills-all');
+    skillsCont.classList.toggle('skills-active');
+}
+
+softSkillsBtn.addEventListener('click', softSkill);
+skillsBtn.addEventListener('click', softSkill);
