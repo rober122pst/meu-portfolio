@@ -1,3 +1,8 @@
+if (window.location.pathname.endsWith('.html')) {
+    window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
+}
+
+
 
 const artMode = document.querySelector('.art-mode');
 
