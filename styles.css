@@ -13,7 +13,7 @@
   --color-main-rgb: rgba(0, 64, 81, .5);
   --color-second: #001836;
 
-  --delay-transition-time: 100ms;
+  
 }
 
 div {
@@ -195,7 +195,7 @@ body {
   transition: .5s ease;
 }
 
-.language:hover img {
+.language a:hover img {
   filter: grayscale(0%)
 }
 
@@ -336,7 +336,7 @@ body {
     animation: written_text .5s ease forwards;
 }
 
-.person-name h1 span {
+.person-name h1 span, .name.animacao-slim span {
     position: absolute;
     top: 0;
     left: 0;
@@ -349,6 +349,21 @@ body {
     animation-delay: .5s;
 }
 
+.name.animacao-rober span{
+  animation: written_text_box_reverse 3s ease;
+  animation-direction: alternate;
+}
+
+.name.animacao-rober::before {
+  content: 'Slim Shady!!';
+}
+.name.animacao-slim::before {
+  content: 'João Roberto';
+}
+.name.animacao-end::before {
+  content: '';
+}
+
 .person-name h1:nth-child(1) span {
     animation-delay: .5s;
 }
@@ -356,7 +371,7 @@ body {
     animation-delay: 1.5s;
 }
 .person-name h1:nth-child(3) span {
-    animation-delay: 2.5s;
+  animation-delay: 2.5s;
 }
 
 .person-name h1:nth-child(1) {
@@ -373,6 +388,7 @@ body {
 
 .person-name {
     margin-top: 11rem;
+    transition: all .5 ease;
 }
 
 .contact-content {
@@ -967,30 +983,54 @@ body {
     position: relative;
     overflow: hidden;
     border-radius: 30px;
-  
+    
     border: 4px solid var(--color-second);
   
     margin: 0 auto;
   }
   
-  .image-project a img {
+  .image-project a div {
     height: 100%;
     width: 100%;
-    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    background-image: url(./img/projects/project-games/rapboy.PNG);
+
     border-radius: 30px;
     position: absolute;
     top: 0;
     left: 0;
-  
+
     border: 2px solid var(--color-white);
   
-    transition: transform .3s ease-out;
+    transition: transform .3s ease-out, background-image .3s ease-out;
     cursor: pointer;
   }
-  
-  .image-project img:hover {
+
+  .swiper-slide:nth-child(1) div a div {
+    background-image: url(./img/projects/project-games/rapboy.PNG);
+  }
+  .swiper-slide:nth-child(2) div a div {
+    background-image: url(./img/projects/project-games/pacman.PNG);
+  }
+  .swiper-slide:nth-child(3) div a div {
+    background-image: url(./img/projects/project-games/minecraft.PNG);
+  }
+  .swiper-slide:nth-child(4) div a div {
+    background-image: url(./img/projects/project-games/horror.PNG);
+  }
+
+  .image-project div:hover {
     transform: scale(1.1);
   }
+
+  .swiper-slide:nth-child(2) div a div:hover {
+    background-image: url(./img/projects/project-games/pacmangif.gif);
+  }
+  .swiper-slide:nth-child(3) div a div:hover {
+    background-image: url(./img/projects/project-games/unknown_2024.06.13-22.31.gif);
+  }
+
   
   .card-project span {
     color: var(--color-black);
@@ -1013,7 +1053,7 @@ body {
   
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
   }
   
   .cta-project a {
@@ -1093,8 +1133,6 @@ body {
 /* Fim do Projetos */
 
 #skills {
-  height: auto;
-  max-height: 1500px;
   width: 100%;
   background: var(--color-black);
 
@@ -1104,11 +1142,11 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
   
-  transition: all 1s ease;
+  transition: height 1s ease;
 }
 
 #skills.skills-active{
-  max-height: 3000px;
+  max-height: none;
 }
 
 .skills-all {
@@ -1122,6 +1160,7 @@ body {
 
 .skills-box {
   width: 100%;
+  height: 100%;
 }
 
 #skills.skills-active .skills-all{
@@ -1239,10 +1278,19 @@ body {
   }
 }
 
+@media (max-width: 1054px) {
+  /* #skills {
+    max-height: 1524px;
+  } */
+}
+
 @media (orientation: portrait) {
   .skills-box i {
     margin-left: calc(48% - 1.5rem);
   }
+  /* #skills {
+    max-height: 1500px;
+  } */
 }
 
 .others-skills-box {
@@ -1275,7 +1323,7 @@ body {
   color: var(--color-white); 
 
   font-size: calc(.8vw + 1.3rem); 
-  margin: 1.5rem;
+  margin: 1.5rem 1.5rem 1.5rem -4rem;
   
   transition: .3s ease;
 }
@@ -1334,7 +1382,7 @@ body {
   overflow-y: auto;
 }
 .others-skills-container p{ 
-  font-size: calc(.4vw + 1rem);
+  font-size: calc(.5vw + .7rem);
   color: var(--color-white);
 }
 
@@ -1348,13 +1396,28 @@ body {
 
 .others-skills-container li i{
   font-size: 4rem;
+  margin-left: 0;
   color: var(--color-main);
 
 }
 
-@media (max-width: 425px) {
+@media (max-width: 768px) {
   .others-skills-container {
-    height: 30rem;
+    height: 35rem
+  }
+}
+@media (max-width: 500px) {
+  .others-skills-container {
+    height: 28rem
+  }
+  .text-others-skill {
+    overflow-y: auto;
+  }
+}
+
+@media (orientation: portrait) and (min-width: 501px){
+  .text-others-skill {
+    overflow-y: visible;
   }
 }
 
@@ -1531,3 +1594,10 @@ body {
         left: 100%;
     }
 }
+@keyframes written_text_box_reverse {
+    20%  {left: 0; width: 100%;}
+  40%  {left: 100%; width: 0px;}
+  60%  {left: 100%; width: 0px;}
+  80%  {left: 0; width: 100%;}
+  /* 100% {left: 0; width: 0px;} */
+  }

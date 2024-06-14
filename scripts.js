@@ -1,6 +1,6 @@
-if (window.location.pathname.endsWith('.html')) {
-    window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
-}
+// if (window.location.pathname.endsWith('.html')) {
+//     window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
+// }
 
 
 
@@ -95,7 +95,7 @@ btnMobile.addEventListener('click', toggleMenu);
 const _name = document.querySelector('.name');
 
 function nameAnim() {
-    _name.style.color = 'var(--color-main)'
+     _name.style.color = 'var(--color-main)'
 }
 _name.addEventListener('animationend', nameAnim); 
 
@@ -148,7 +148,21 @@ function initialObserver() {
 
 initialObserver();
 /////////////////////////////////////////////////////////////////
+function checkSkillsHeight() {
+    let skills = document.getElementById('skills');
+    const skillBox = document.querySelector('.skills-box');
 
+    const skillHeight = skillBox.offsetHeight;
+    if(!skills.classList.contains('skills-active')) {
+        skills.style.maxHeight = (skillHeight+200) + 'px';
+    }else {
+        skills.style.maxHeight = 'none';
+    }
+
+    console.log("aumentou");
+}
+checkSkillsHeight();
+window.addEventListener('resize', checkSkillsHeight);
 ////////////////////////////MODOS///////////////////////////////
 const btnArt = document.querySelector('.art-btn');
 const btnProgrammer = document.querySelector('.programmer-btn');
@@ -169,7 +183,7 @@ function toggleMode(event) {
     
     hidden = false;
     
-    const aboutText = document.querySelector('.text-about');
+    const boxAboutText = document.querySelector('.box-about');
     const aboutTechs = document.querySelector('.skills-content');
 
     if (buttonClicked === btnArt) {
@@ -179,9 +193,30 @@ function toggleMode(event) {
 
         currentMode = btnArt;
 
-        aboutText.innerHTML = `
-        Sou um Artista de
-        <p>Pixel Art e Desenho Tradicional</p>
+        boxAboutText.innerHTML = `
+        <div class="section-subtitle">
+        <h2 class="section-hidden">
+            <p>🎨</p>
+            <p><span>Designer</span> e Desenhista</p>
+        </h2>
+        </div>
+
+        <h3 class="text-about section-hidden">
+            Sou um Designer e um desenhista com habilidades de
+            <p>Realismo, Pixel art, Camisas e Vetorização</p>
+        </h3>
+
+        <h4 class="section-hidden">
+        Seguindo os passos do meu pai, um incrível desenhista e designer de estampas, mergulhei no mundo do design e do desenho. Passei a vida toda desenhando, aprimorando minhas habilidades dia após dia. Nunca fiz um curso formal, mas aprendi muito com meu pai e por conta própria. Cada traço que faço é uma expressão da minha paixão e dedicação a essa arte.
+        </h4>
+
+        <h4 class="section-hidden">
+            Abaixo está o <p>currículo</p> para download.
+        </h4>
+
+        <div class="button-cta section-hidden">
+            <a>Currículo</a>
+        </div>
         `;
 
         ///////////////TECHS/////////////////
@@ -249,9 +284,30 @@ function toggleMode(event) {
 
         currentMode = btnProgrammer;
 
-        aboutText.innerHTML = `
-        Sou um Desenvolvedor de Jogos com esperiências em
-        <p>Java, C#, GML, Unity e Game Maker</p>
+        boxAboutText.innerHTML = `
+        <div class="section-subtitle">
+        <h2 class="section-hidden">
+            <p>💻</p>
+            <p><span>Desenvolvedor</span> de Jogos</p>
+        </h2>
+        </div>
+
+        <h3 class="text-about section-hidden">
+            Sou um Desenvolvedor de Jogos com esperiências em
+            <p>Java, C#, GML, Unity e Game Maker</p>
+        </h3>
+
+        <h4 class="section-hidden">
+            Oi, sou o Rober, tenho 18 anos e sou louco por programação e jogos. Comecei a criar jogos no PowerPoint e Scratch quando tinha 6 anos e desde então minha curiosidade só aumentou. Adoro matemática e isso me ajuda muito na programação. Meu sonho é ser um desenvolvedor de jogos profissional, mas também curto explorar outras áreas da programação. Resumindo, sou um cara apaixonado por tecnologia, sempre aprendendo e animado para ver onde essa jornada vai me levar.
+        </h4>
+
+        <h4 class="section-hidden">
+            Abaixo está o <p>currículo</p> para download.
+        </h4>
+
+        <div class="button-cta section-hidden">
+            <a>Currículo</a>
+        </div>
         `;
 
         ///////////////TECHS/////////////////
@@ -286,6 +342,20 @@ function toggleMode(event) {
                     <h2>Python</h2>
                     <li><svg fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>python</title> <path d="M19.212 26.447l-0.287 0.412-0.1 0.512 0.1 0.512 0.287 0.412 0.412 0.287 0.512 0.1 0.512-0.1 0.412-0.287 0.287-0.412 0.1-0.512-0.1-0.512-0.287-0.412-0.412-0.287-0.512-0.1-0.512 0.1zM27.297 8.64l0.35 0.075 0.4 0.15 0.437 0.225 0.45 0.337 0.45 0.437 0.437 0.587 0.4 0.737 0.35 0.912 0.262 1.1 0.175 1.3 0.062 1.537-0.075 1.537-0.2 1.3-0.3 1.075-0.4 0.887-0.45 0.712-0.5 0.562-0.525 0.412-0.525 0.3-0.5 0.2-0.45 0.112-0.4 0.062-0.3 0.025-0.2-0.012h-10.272v1.025h7.298l0.012 3.449 0.025 0.45-0.062 0.425-0.137 0.387-0.212 0.362-0.312 0.312-0.387 0.3-0.475 0.25-0.55 0.212-0.637 0.187-0.725 0.162-0.8 0.112-0.887 0.087-0.962 0.050-1.050 0.012-1.587-0.050-1.337-0.175-1.125-0.25-0.912-0.312-0.737-0.375-0.562-0.412-0.425-0.425-0.312-0.425-0.2-0.412-0.125-0.375-0.050-0.312-0.025-0.25 0.012-0.162v-6.673l0.063-0.8 0.162-0.675 0.262-0.575 0.325-0.475 0.375-0.4 0.412-0.3 0.437-0.25 0.437-0.175 0.412-0.125 0.375-0.075 0.325-0.050 0.262-0.025 0.162-0.012h7.298l0.862-0.062 0.737-0.175 0.625-0.262 0.512-0.35 0.412-0.4 0.337-0.437 0.25-0.45 0.187-0.45 0.125-0.437 0.087-0.4 0.050-0.35 0.025-0.262v-3.824h2.612l0.175 0.012zM10.939 3.704l-0.287 0.412-0.1 0.512 0.1 0.512 0.287 0.425 0.412 0.275 0.512 0.112 0.512-0.113 0.412-0.275 0.287-0.425 0.1-0.512-0.1-0.512-0.287-0.412-0.412-0.275-0.512-0.112-0.512 0.112zM18.812 1.229l1.125 0.25 0.912 0.325 0.737 0.375 0.562 0.4 0.425 0.425 0.312 0.425 0.2 0.412 0.125 0.375 0.050 0.325 0.025 0.25-0.012 0.162v6.673l-0.062 0.787-0.162 0.687-0.262 0.575-0.325 0.475-0.375 0.387-0.412 0.312-0.437 0.237-0.437 0.175-0.412 0.125-0.375 0.087-0.325 0.050-0.263 0.025h-7.46l-0.862 0.062-0.737 0.175-0.625 0.275-0.512 0.337-0.412 0.4-0.337 0.437-0.25 0.45-0.187 0.462-0.125 0.437-0.087 0.4-0.050 0.337-0.025 0.262v3.824h-2.787l-0.262-0.037-0.35-0.087-0.4-0.15-0.437-0.225-0.45-0.325-0.45-0.45-0.437-0.575-0.4-0.737-0.35-0.912-0.262-1.1-0.175-1.312-0.062-1.537 0.075-1.524 0.2-1.3 0.3-1.087 0.4-0.887 0.45-0.712 0.5-0.55 0.525-0.412 0.525-0.3 0.5-0.2 0.45-0.125 0.4-0.062 0.3-0.012h0.2l0.075 0.012h10.197v-1.037h-7.298l-0.012-3.436-0.025-0.462 0.062-0.425 0.137-0.387 0.212-0.35 0.312-0.325 0.387-0.287 0.475-0.25 0.55-0.225 0.637-0.187 0.725-0.15 0.8-0.125 0.887-0.075 0.962-0.050 1.050-0.025 1.587 0.063z"></path> </g></svg></li>
                 </div>
+                <div class="skills-container section-hidden">
+                            <h2>TensorFlow</h2>
+                            <li><svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tensorflow</title> <path d="M29.399 14.959l-0.017-6.636-12.806-7.319v29.991l5.117-2.972v-8.438l3.864 2.234-0.023-5.771-3.841-2.194v-3.35l7.708 4.454zM2.619 8.322l12.806-7.318v29.991l-5.117-2.972v-17.519l-7.708 4.454 0.019-6.636z"></path> </g></svg></li>
+                        </div>
+                        <div class="skills-container section-hidden">
+                            <h2>ChatGPT</h2>
+                            <li><svg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'>
+                                <path d='m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z'/>
+                                </svg></li>
+                        </div>
+                        <div class="skills-container section-hidden">
+                            <h2>Excel</h2>
+                            <li><svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" xml:space="preserve" ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M25.162,3H16v2.984h3.031v2.031H16V10h3v2h-3v2h3v2h-3v2h3v2h-3v3h9.162 C25.623,23,26,22.609,26,22.13V3.87C26,3.391,25.623,3,25.162,3z M24,20h-4v-2h4V20z M24,16h-4v-2h4V16z M24,12h-4v-2h4V12z M24,8 h-4V6h4V8z"></path> <path  d="M0,2.889v20.223L15,26V0L0,2.889z M9.488,18.08l-1.745-3.299c-0.066-0.123-0.134-0.349-0.205-0.678 H7.511C7.478,14.258,7.4,14.494,7.277,14.81l-1.751,3.27H2.807l3.228-5.064L3.082,7.951h2.776l1.448,3.037 c0.113,0.24,0.214,0.525,0.304,0.854h0.028c0.057-0.198,0.163-0.492,0.318-0.883l1.61-3.009h2.542l-3.037,5.022l3.122,5.107 L9.488,18.08L9.488,18.08z"></path> </g> </g></svg></li>
+                        </div>
             </ul>
             <h3>Softwares</h3>
             <ul class="skills-software icons-skills">
@@ -307,6 +377,31 @@ function toggleMode(event) {
 
         currentMode = btn3d;
 
+        boxAboutText.innerHTML = `
+        <div class="section-subtitle">
+        <h2 class="section-hidden">
+            <p>🧊</p>
+            <p><span>Modelador</span> e Designer 3D</p>
+        </h2>
+        </div>
+
+        <h3 class="text-about section-hidden">
+            Sou um Modelador e Designer 3D
+            <p>Modelagem, Interiores, Render, C4D e Blender</p>
+        </h3>
+
+        <h4 class="section-hidden">
+        Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com o Blender 2.69. Com o tempo, me aventurei no Cinema 4D, onde me diverti criando animações de Minecraft e renderizações de interiores. Infelizmente, perdi a maior parte desse trabalho quando meu HD quebrou. :( Desde 2020, tenho me dedicado à modelagem de faces para o PES 21 usando o Blender. Já vendi várias dessas modelagens e até trabalhei para um patch por um tempo. Atualmente, estou aprimorando minhas habilidades em low poly pixel art, uma técnica que estou empregando no desenvolvimento do meu novo jogo. Cada projeto é uma nova oportunidade para aprender e crescer nesta área fascinante.
+        </h4>
+
+        <h4 class="section-hidden">
+            Abaixo está o <p>currículo</p> para download.
+        </h4>
+
+        <div class="button-cta section-hidden">
+            <a>Currículo</a>
+        </div>
+        `;
         ///////////////TECHS/////////////////
         aboutTechs.innerHTML = `
         <h3>Habilidades</h3>
@@ -348,11 +443,17 @@ function toggleMode(event) {
             section.classList.remove('section-show');
             section.classList.add('section-hidden');
         });
+        document.querySelectorAll('.section-show-project').forEach(section => {
+            section.classList.remove('section-show-project');
+            section.classList.add('section-hidden');
+        });
         initialObserver();
     }
 
     let skills = document.getElementById('skills');
     skills.classList.remove('skills-active');
+
+    checkSkillsHeight();
 }
 
 btnArt.addEventListener('click', toggleMode);
@@ -365,6 +466,8 @@ let skillsBtn = document.querySelector('.fa-arrow-left');
 function softSkill() {
     let skills = document.getElementById('skills');
     skills.classList.toggle('skills-active');
+
+    checkSkillsHeight();
 }
 
 softSkillsBtn.addEventListener('click', softSkill);
@@ -384,3 +487,5 @@ checkOrientation();
 
 // Add event listener for orientation change
 window.addEventListener('resize', checkOrientation);
+
+
