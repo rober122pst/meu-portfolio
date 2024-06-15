@@ -51,7 +51,6 @@ body {
   background: var(--color-main-rgb);
 }
 
-
 .section-hidden {
   opacity: 0;
 }
@@ -554,11 +553,17 @@ body {
     transition: background-image .6s ease;
 }
 
+.mode {
+  border-top: 2px solid var(--color-white);
+  border-bottom: 2px solid var(--color-white);
+  margin-top: 2rem;
+}
+
 .mode i {
-    font-size: calc(1.5vw + 0.8rem);
+    font-size: calc(1.5vw + 1rem);
     color: var(--color-white);
 
-    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
+    margin: calc(1.2vw + 1.2rem) calc(1vw + 0.5rem);
     filter: brightness(.8);
     transition: all .3s ease;
 }
@@ -1011,24 +1016,30 @@ body {
     background-image: url(./img/projects/project-games/rapboy.PNG);
   }
   .swiper-slide:nth-child(2) div a div {
-    background-image: url(./img/projects/project-games/pacman.PNG);
+    background-image: url(./img/projects/project-games/horror.PNG);
   }
   .swiper-slide:nth-child(3) div a div {
     background-image: url(./img/projects/project-games/minecraft.PNG);
   }
   .swiper-slide:nth-child(4) div a div {
-    background-image: url(./img/projects/project-games/horror.PNG);
+    background-image: url(./img/projects/project-games/pacman.PNG);
+  }
+  .swiper-slide:nth-child(5) div a div {
+    background-image: url(./img/projects/project-games/team_fortress.PNG);
   }
 
   .image-project div:hover {
     transform: scale(1.1);
   }
 
-  .swiper-slide:nth-child(2) div a div:hover {
-    background-image: url(./img/projects/project-games/pacmangif.gif);
-  }
   .swiper-slide:nth-child(3) div a div:hover {
     background-image: url(./img/projects/project-games/unknown_2024.06.13-22.31.gif);
+  }
+  .swiper-slide:nth-child(4) div a div:hover {
+    background-image: url(./img/projects/project-games/pacmangif.gif);
+  }
+  .swiper-slide:nth-child(5) div a div:hover {
+    background-image: url(./img/projects/project-games/team_fortress.gif);
   }
 
   

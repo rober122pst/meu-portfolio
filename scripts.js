@@ -158,8 +158,6 @@ function checkSkillsHeight() {
     }else {
         skills.style.maxHeight = 'none';
     }
-
-    console.log("aumentou");
 }
 checkSkillsHeight();
 window.addEventListener('resize', checkSkillsHeight);

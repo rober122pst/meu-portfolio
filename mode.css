@@ -14,20 +14,16 @@
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
 
-    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
-    transform: translateY(-20px);
+    transform: translateY(-1vw);
     filter: brightness(1);
-    transition: all .3s ease;
 }
 
 .art-mode .mode i:nth-child(2) {
     font-size: calc(1.5vw + 0.8rem);
     color: var(--color-main);
 
-    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
-    transform: translateY(-20px);
+    transform: translateY(-1vw);
     filter: brightness(1);
-    transition: all .3s ease;
 }
 
 .cube-mode .mode i:nth-child(3) {
@@ -39,10 +35,8 @@
     -1px  1px 0 #0c0c0c,
      1px  1px 0 #0c0c0c; */
 
-    margin: calc(1vw + 2rem) calc(0.8vw + 0.8rem);
-    transform: translateY(-20px);
+    transform: translateY(-1vw);
     filter: brightness(1);
-    transition: all .3s ease;
 }
 
 /*******************************************************/
