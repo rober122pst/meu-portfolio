@@ -121,6 +121,17 @@ function initialObserver() {
             }
         });
     }, options);
+
+    const observerProjectsArts = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('section-show-project');
+                entry.target.classList.remove('section-hidden');              
+                hidden = true;
+                observer.unobserve(entry.target);
+            }
+        });
+    }, options);
     
     // Cria o Intersection Observer
     const observerProjects = new IntersectionObserver((entries, observer) => {
@@ -135,9 +146,14 @@ function initialObserver() {
     });
     
     let projects = document.querySelectorAll('.swiper');
+    let projectsArts = document.querySelectorAll('.img-arts');
 
     projects.forEach( (element) => {
         observerProjects.observe(element);
+    });
+
+    projectsArts.forEach( (element) => {
+        observerProjectsArts.observe(element);
     });
     
     // Observa cada seção

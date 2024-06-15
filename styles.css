@@ -1150,8 +1150,7 @@ body {
   display: flex;
   flex-direction: column;
 
-  overflow-x: hidden;
-  overflow-y: hidden;
+  overflow: hidden;
   
   transition: height 1s ease;
 }
