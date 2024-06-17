@@ -146,7 +146,7 @@ function initialObserver() {
     });
     
     let projects = document.querySelectorAll('.swiper');
-    let projectsArts = document.querySelectorAll('.img-arts');
+    let projectsArts = document.querySelectorAll('.projects-grid > div');
 
     projects.forEach( (element) => {
         observerProjects.observe(element);
