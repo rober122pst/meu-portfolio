@@ -167,12 +167,14 @@ initialObserver();
 function checkSkillsHeight() {
     let skills = document.getElementById('skills');
     const skillBox = document.querySelector('.skills-box');
+    const skillOtherBox = document.querySelector('.others-skills-box');
 
     const skillHeight = skillBox.offsetHeight;
+    const otherSkillHeight = skillOtherBox.offsetHeight;
     if(!skills.classList.contains('skills-active')) {
         skills.style.maxHeight = (skillHeight+200) + 'px';
     }else {
-        skills.style.maxHeight = 'none';
+        skills.style.maxHeight = (otherSkillHeight+200) + 'px';
     }
 }
 checkSkillsHeight();
@@ -501,5 +503,14 @@ checkOrientation();
 
 // Add event listener for orientation change
 window.addEventListener('resize', checkOrientation);
+/////////////////////////////////////////////////////////////////////
+let expandProjects = document.querySelector('.fa-chevron-down');
+function checkExpand() {
+    const projectsSection = document.getElementById('projects');
+    projectsSection.classList.toggle('projects-active');
+    expandProjects.classList.toggle('projects-active');
+}
+
+expandProjects.addEventListener('click', checkExpand);
 
 
