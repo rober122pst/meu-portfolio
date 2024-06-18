@@ -7,7 +7,13 @@
 const artMode = document.querySelector('.art-mode');
 
 window.addEventListener("load", () => {
-    document.querySelector(".loader").classList.add("loader--hidden");
+    let loader = document.querySelector(".loader");
+
+    loader.classList.add("loader--hidden");
+
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
 });
 
 function createSwiper(container, pagination, nextButton, prevButton) {
