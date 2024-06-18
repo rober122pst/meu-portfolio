@@ -98,110 +98,6 @@
     flex-direction: column;
 }
 
-/* .projects-grid {  display: grid;
-    grid-template-columns: repeat(4, minmax(100px, 300px));
-    grid-template-rows: 60px repeat(6, 300px);
-    gap: 3rem;
-    grid-auto-flow: row;
-    justify-content: center;
-    align-items: center;
-    grid-template-areas:
-        "t-1 t-1 t-1 t-1"
-        "Sport Sport Spider-Man Spider-Man"
-        "Sport Sport Foxy Foxy"
-        "Lonely Lonely Foxy Foxy"
-        "Spider-Man-1-1 . Life-Strange Galo"
-        "Sea Drive Drive Natal"
-        "Sea Batman Batman Natal";
-
-    width: 100%;
-
-    /* overflow: hidden; 
-  }
-  
-  .t-1 { grid-area: t-1; display: flex; align-items: center;}
-  .t-2 { grid-area: t-2; display: flex; align-items: center;}
-  .Spider-Man { grid-area: Spider-Man; display: flex; align-items: center;}
-  .Drive { grid-area: Drive; display: flex; align-items: center;}
-  .Batman { grid-area: Batman; display: flex; align-items: center;}
-  .Foxy { grid-area: Foxy;}
-  .Lonely { grid-area: Lonely;}
-  .Sport { grid-area: Sport;}
-  .Life-Strange { grid-area: Life-Strange;}
-  .Galo { grid-area: Galo;  display: flex; align-items: center; background: black;}
-  .Sea { grid-area: Sea; display: flex; justify-content: center; align-items: top;}
-  .Natal { grid-area: Natal; display: flex; justify-content: center; align-items: top;} */
-
-/* .projects-grid {  display: grid;
-    grid-template-columns: repeat(4, minmax(200px, 300px));
-    grid-auto-rows: calc(5rem + 20vh);
-    grid-auto-flow: dense;
-    gap: 3rem;
-    /* grid-auto-flow: row;
-    justify-content: center;
-    align-items: center; 
-
-    width: 100%;
-
-    /* overflow: hidden; 
-} */
-
-/* .projects-grid > div, .projects-grid img{
-    border-radius: 10px;
-}
-
-.projects-grid .wide {
-    grid-column: span 2;
-}
-
-.projects-grid .tall {
-    grid-column: span 2;
-}
-
-.projects-grid .big {
-    grid-column: span 2;
-    grid-row: span 2;
-}
-
-.art-title h2{
-    color: var(--color-white);
-    font-size: calc(.4vw + 1.2rem);
-
-    border-bottom: 2px solid var(--color-white);
-}
-
-.img-arts {
-    display: flex;
-    align-items: top;
-    background-size: cover;
-
-    position: relative;
-
-    width: 100%; 
-    height: 100%; */
-
-    /* border: 4px solid var(--color-second); */
-/* 
-    transition: transform 1s linear;
-} */
-
-/* .img-arts a img {
-    width: 100%;
-    height: 100%;
-
-    cursor: pointer;
-
-    transition: transform .5s ease;
-
-    background-size: cover;
-
-}
-
-.Sea a img, .Natal a img {
-    height: 100%;
-    width: auto;
-}*/
-
 .projects-grid {
     padding: 2rem;
     max-width: 1440px;
@@ -298,7 +194,7 @@
 
 .title h3 {
     color: var(--color-main);
-    font-size: 2.2rem;
+    font-size: 2.4rem;
 }
 
 .title p {  

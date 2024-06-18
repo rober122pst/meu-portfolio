@@ -6,8 +6,9 @@
 
 const artMode = document.querySelector('.art-mode');
 
-
-
+window.addEventListener("load", () => {
+    document.querySelector(".loader").classList.add("loader--hidden");
+});
 
 function createSwiper(container, pagination, nextButton, prevButton) {
     return new Swiper(container, {

@@ -51,6 +51,39 @@ body {
   background: var(--color-main-rgb);
 }
 
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: var(--color-black);
+
+  z-index: 5000;
+
+  transition: all .75s;
+}
+
+.loader > img {
+  width: 180px;
+}
+
+.loader > h1 {
+  /* margin: 3rem; */
+  color: var(--color-white);
+
+  text-align: center;
+}
+
+.loader--hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .section-hidden {
   opacity: 0;
 }
