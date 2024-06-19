@@ -136,6 +136,7 @@ function initialObserver() {
                 entry.target.classList.remove('section-hidden');              
                 hidden = true;
                 observer.unobserve(entry.target);
+                console.log('aqui1');
             }
         });
     }, options);
@@ -151,6 +152,25 @@ function initialObserver() {
             }
         });
     });
+
+    const optionsSlider = {
+        // root: document.querySelector('#projects'),
+        rootMargin: '0px',
+        threshold: 0.3
+    }
+
+    const observerSlider = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                document.querySelectorAll(".manual-navigation").style.display = 'none';
+                console.log('aqui');
+            }
+        });
+    }, optionsSlider);
+
+    let target = document.querySelector("#projects");
+    observerSlider.observe(target);
+ 
     
     let projects = document.querySelectorAll('.swiper');
     let projectsArts = document.querySelectorAll('.projects-grid > div');
@@ -519,5 +539,8 @@ function checkExpand() {
 }
 
 expandProjects.addEventListener('click', checkExpand);
+/////////////////////////////////////////////////////////////////////
+
+
 
 

@@ -73,7 +73,6 @@
     max-height: none;
     /* max-height: calc(300px*4 + 156px + 3rem*4 + 60px); */
     margin-bottom: 0;
-    overflow-y: hidden;
 }
 
 .art-mode #projects.projects-active { 
@@ -83,19 +82,44 @@
 
 .arts-projects {
     display: none;
-
-    align-items: center;
-    justify-content: center;
-
     width: 100%;
 }
 .art-mode .arts-projects {
-    display: flex;
-    
-    justify-content: center;
-    align-items: center;
+    display: block;
+    margin: 0 auto;
+    width: 200%;
+    height: auto;
+}
+                    
+.arts-slides {
+    width: 100%;        
+    height: auto;      
+    display: flex;                       
+}
 
-    flex-direction: column;
+.arts-slides input {
+    display: none;
+}
+
+.arts-slides li {
+    margin: 0 auto;
+}
+
+.manual-navigation {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    margin-top: -40px;
+    display: flex;
+    justify-content: center;
+}
+
+.manual-btn {
+    border: 2px solid #fff;
+    padding: 5px;
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .projects-grid {

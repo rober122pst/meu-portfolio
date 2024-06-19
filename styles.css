@@ -828,6 +828,8 @@ body {
 
     display: flex;
     flex-direction: column;
+
+    overflow: hidden;
     
     transition: all 2s ease; 
 }
