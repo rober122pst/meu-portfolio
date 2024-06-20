@@ -71,20 +71,14 @@
 
 .art-mode #projects {
     max-height: none;
-    /* max-height: calc(300px*4 + 156px + 3rem*4 + 60px); */
     margin-bottom: 0;
-}
-
-.art-mode #projects.projects-active { 
-    max-height: 2193px;
-    margin-bottom: 5rem;
 }
 
 .arts-projects {
     display: none;
     
 }
-.art-mode .arts-projects {
+.art-mode .arts-projects, .cube-mode .arts-projects {
     display: flex;
     width: 400%;
     height: auto;
@@ -106,7 +100,7 @@
 
 .manual-navigation {
     position: sticky;
-    top: 92vh;
+    top: 90%;
     left: 0;
     display: flex;
     justify-content: center;

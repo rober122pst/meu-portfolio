@@ -203,14 +203,22 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 // Observa a seção alvo
 observer.observe(targetSection);
+const radio1 = document.getElementById('radio1');
 
+// Marcar o radio1 como checked quando a página carregar
+radio1.checked = true;
+
+// Altura da DIV
+document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; 
 document.addEventListener('DOMContentLoaded', function () {
     const radios = document.querySelectorAll('input[name="radio-btn"]');
+
+    
 
     function isInView(element) {
         const rect = element.getBoundingClientRect();
         const windowHeight = (window.innerHeight || document.documentElement.clientHeight);      
-        const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height/3) >= 0);
+        const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
         return (vertInView);
       }
   
