@@ -82,45 +82,71 @@
 
 .arts-projects {
     display: none;
-    width: 100%;
+    
 }
 .art-mode .arts-projects {
-    display: block;
-    margin: 0 auto;
-    width: 200%;
+    display: flex;
+    width: 400%;
     height: auto;
+    
 }
                     
-.arts-slides {
-    width: 100%;        
+.sliders {
+    width: 25%;        
     height: auto;      
-    display: flex;                       
+    display: flex;
+    flex-direction: column;   
+    
+    transition: 1s;
 }
 
-.arts-slides input {
+#projects input {
     display: none;
 }
 
-.arts-slides li {
-    margin: 0 auto;
-}
-
 .manual-navigation {
-    position: fixed;
-    bottom: 40px;
+    position: sticky;
+    top: 92vh;
     left: 0;
-    width: 100%;
-    margin-top: -40px;
     display: flex;
     justify-content: center;
+
+    z-index: 1;
+
+    transition: .5s;
 }
 
 .manual-btn {
-    border: 2px solid #fff;
-    padding: 5px;
-    border-radius: 10px;
+    border: 2px solid var(--color-main);
+    background-color: #ffffff66;
+    padding: 7px;
+    border-radius: 50%;
     cursor: pointer;
+    transition: .5s;
 }
+
+.manual-btn:not(:last-child) {
+    margin-right: 25px;
+}
+
+.manual-btn:hover {
+    background-color: var(--color-main);
+}
+
+#radio1:checked ~ .arts-projects .first{
+    margin-left: 0%;
+}
+#radio2:checked ~ .arts-projects .first{
+    margin-left: -25%;
+}
+#radio3:checked ~ .arts-projects .first{
+    margin-left: -50%;
+}
+
+#radio1:checked ~ .manual-navigation .manual-btn:nth-child(1), #radio2:checked ~ .manual-navigation .manual-btn:nth-child(2), #radio3:checked ~ .manual-navigation .manual-btn:nth-child(3) {
+    background-color: var(--color-main);
+}
+
 
 .projects-grid {
     padding: 2rem;
@@ -133,13 +159,19 @@
     grid-auto-flow: dense;
 }
 
+.art-title {
+    width: auto;
+    margin: 0 auto;
+}
+
 .art-title h2{
+    border-bottom: 2px solid var(--color-white);
+
     color: var(--color-white);
     font-size: calc(.4vw + 1.2rem);
 
-    border-bottom: 2px solid var(--color-white); 
+    margin: 2rem auto 4rem auto;
 
-    margin: 2rem 0 4rem 0;
 }
 
 .projects-grid img {
@@ -324,48 +356,3 @@
 }
 
 /**********************************************/
-/*
-.expand-art-project {
-    display: flex;
-    justify-content: center;
-
-    width: 100%;
-    height: auto;
-
-    position: relative;
-
-    
-}
-
-.expand-art-project::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 100%;
-
-    width: 100%;
-    height: 10rem;
-
-    background: 
-        linear-gradient(180deg, transparent 10%, var(--color-black), var(--color-black));
-}
-
-.fa-chevron-down {
-    display: none;
-}
-
-.art-mode .fa-chevron-down {
-    display: block;
-
-    color: var(--color-white);
-    font-size: 5rem;
-
-    transition: .3s ease;
-    margin: 1rem;
-
-    cursor: pointer;
-}
-
-.fa-chevron-down.projects-active  {
-    transform: rotate(180deg);
-}

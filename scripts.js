@@ -136,7 +136,6 @@ function initialObserver() {
                 entry.target.classList.remove('section-hidden');              
                 hidden = true;
                 observer.unobserve(entry.target);
-                console.log('aqui1');
             }
         });
     }, options);
@@ -152,26 +151,7 @@ function initialObserver() {
             }
         });
     });
-
-    const optionsSlider = {
-        // root: document.querySelector('#projects'),
-        rootMargin: '0px',
-        threshold: 0.3
-    }
-
-    const observerSlider = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                document.querySelectorAll(".manual-navigation").style.display = 'none';
-                console.log('aqui');
-            }
-        });
-    }, optionsSlider);
-
-    let target = document.querySelector("#projects");
-    observerSlider.observe(target);
- 
-    
+   
     let projects = document.querySelectorAll('.swiper');
     let projectsArts = document.querySelectorAll('.projects-grid > div');
 
@@ -190,7 +170,73 @@ function initialObserver() {
 }
 
 initialObserver();
-/////////////////////////////////////////////////////////////////
+
+const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold:[0.02, 0.05]
+}
+
+const fixedDiv = document.querySelector('.manual-navigation');
+const targetSection = document.querySelector('.arts-projects');
+
+// Cria um Intersection Observer
+const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            if(Math.round(entry.intersectionRatio * 100) >= 2 && window.innerHeight <= 850) {
+                fixedDiv.style.visibility = 'visible';
+                fixedDiv.style.transform = 'translateY(0)';
+                fixedDiv.style.opacity = '1';
+            }else if(Math.round(entry.intersectionRatio * 100) >= 5) {
+                fixedDiv.style.visibility = 'visible';
+                fixedDiv.style.transform = 'translateY(0)';
+                fixedDiv.style.opacity = '1'; 
+            }
+        } else {
+            fixedDiv.style.visibility = 'hidden';
+            fixedDiv.style.transform = 'translateY(100%)';
+            fixedDiv.style.opacity = '0';
+        }
+    });
+}, options);
+
+// Observa a seção alvo
+observer.observe(targetSection);
+
+document.addEventListener('DOMContentLoaded', function () {
+    const radios = document.querySelectorAll('input[name="radio-btn"]');
+
+    function isInView(element) {
+        const rect = element.getBoundingClientRect();
+        const windowHeight = (window.innerHeight || document.documentElement.clientHeight);      
+        const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height/3) >= 0);
+        return (vertInView);
+      }
+  
+    radios.forEach(radio => {
+      radio.addEventListener('change', function () {
+        const parentDiv = document.querySelector('#projects');
+        if (radio.id === 'radio1') {
+          parentDiv.style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
+
+          if(!isInView(document.querySelector('.first .projects-grid')))
+            document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (radio.id === 'radio2') {
+          parentDiv.style.maxHeight = (document.querySelector('.second .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';// Altere o estilo conforme necessário
+          
+          if(!isInView(document.querySelector('.second .projects-grid')))
+            document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        } else if (radio.id === 'radio3') {
+            parentDiv.style.maxHeight = (document.querySelector('.third .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
+            if(!isInView(document.querySelector('.third .projects-grid')))
+                document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+  
+///////////////////////////////////////////////////////////////
 function checkSkillsHeight() {
     let skills = document.getElementById('skills');
     const skillBox = document.querySelector('.skills-box');

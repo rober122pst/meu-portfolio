@@ -146,7 +146,8 @@ body {
   height: 70px;
 
   padding: 15px 30px;
-  position: fixed;
+  position: sticky;
+  top: 0;
 
   background: transparent;
   transition: all .3s ease-out;
@@ -829,7 +830,7 @@ body {
     display: flex;
     flex-direction: column;
 
-    overflow: hidden;
+    overflow: clip;
     
     transition: all 2s ease; 
 }
