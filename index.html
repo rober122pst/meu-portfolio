@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="art-mode" lang="en">
+<html class="programmer-mode" lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,12 +12,137 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
     <link rel="stylesheet" href="mode.css">
     <link rel="stylesheet" href="styles.css">
+
+    <noscript>
+
+        <style>
+
+            .notificacao {
+                
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                padding: 2rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+
+                background-color: #0c0c0c;
+
+                flex-direction: column;
+
+                z-index: 5001;
+            }
+
+            .notificacao p {
+                text-align: center;
+
+                color: #fff;
+                font-size: calc(.8rem + 1.2vw);
+            }
+
+            .notificacao > img {
+                max-width: 950px;
+                width: calc(20rem + 40vw);
+                margin-bottom: -2rem;
+            }
+
+            .notificacao .imagens {
+                width: 100%;
+                margin-top: 2rem;
+                display: flex;
+                justify-content: center;
+                
+                position: relative;
+
+                flex-direction: row;
+            }
+
+            .notificacao .imagens::after {
+                content: "🠖";
+                color: #fff;
+                font-size: 5rem;
+
+                position: absolute;
+                top: 35%;
+            }
+
+            .notificacao .imagens img {
+                margin: 0 3rem;
+                object-fit: cover;
+                width: calc(10rem + 25vw);
+                max-width: 400px;
+                height: auto;
+                border: #fff 2px solid;
+            }
+
+            .imagens-mobile {
+                display: none;
+            }
+
+            @media (max-width: 530px) {
+                .notificacao .imagens {
+                    display: none;
+                }
+
+                .notificacao .imagens-mobile {
+                    width: 100%;
+                    margin-top: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    
+                    position: relative;
+
+                    flex-direction: row;
+                }
+
+                .notificacao .imagens-mobile img {
+                    margin: 0 .5rem;
+                    object-fit: cover;
+                    width: calc(2rem + 22vw);
+                    max-width: 400px;
+                    height: auto;
+                    border: #fff 2px solid;
+                }
+            }
+        </style>
+    </noscript>
+
+    <style>
+        .no-js {
+            display: none;
+        }
+        
+    </style>
+        
 </head>
 <body>
-    <!-- <div class="loader"><img src="./img/loading-screen/Lara_loading_.gif" alt="">
+
+    <div class="notificacao">
+        <img src="./img/roberJS.png" alt="lara">
+        <div>
+            <p>O seu <b>Java Script</b> está desativado! Ative para o site funcionar de maneira correta. <br> Após isso, reinicie a página.</p>
+        </div>
+        <div class="imagens">
+            <img src="./img/tutorial1.png" alt="tutorialjs">
+            <img src="./img/tutorial2.png" alt="tutorialjs">
+        </div>
+        <div class="imagens-mobile">
+            <img src="./img/mobile_tutorial1.png" alt="tutorialjs">
+            <img src="./img/mobile_tutorial2.png" alt="tutorialjs">
+            <img src="./img/mobile_tutorial3.png" alt="tutorialjs">
+        </div>
+    </div>
+
+    
+    <div class="loader"><img src="./img/loading-screen/Lara_loading_.gif" alt="lara">
     <h1>A Lara está à procura dos códigos, </h1>
     <h1>aguarde um momento.</h1>
-    </div> -->
+    </div>
+
+    <div class="no-js content">
     <!-- Header -->
     <section id="header" style="background: transparent; box-shadow: transparent 0px 0px 0px 0px;">
         <a class="header-title" href="https://rober122pst.github.io/meu-portfolio/">
@@ -548,8 +673,8 @@
                         <a href="">
                             <div class="infos-arts">
                                 <div class="title">
-                                    <h3>Jinx</h3>
-                                    <p>Eterno símbolo de orgulho é o pavilhão, de listras pretas e vermelhas com o Leão. A bandeira do Sport Club do Recife no topo do mastro. Feita para um desafio semanal. Minha primeira animação com uma paleta de cores coloridas.</p>
+                                    <h3>Clementine</h3>
+                                    <p></p>
                                 </div>
                                 <div class="infos">
                                     <p><b>Data: </b>Março de 2024</p>
@@ -1378,13 +1503,9 @@
         </div>
     </section>
     <!-- End Footer -->
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="scripts.js"></script>
-    <noscript>
-        <div class="noscript-message">
-          <p>Seu navegador tem o JavaScript desativado. Para uma melhor experiência, por favor habilite o JavaScript nas configurações do seu navegador.</p>
-        </div>
-      </noscript>
 </body>
 </html>

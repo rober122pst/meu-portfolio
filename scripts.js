@@ -2,19 +2,29 @@
 //     window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
 // }
 
-
+document.querySelector('.notificacao').style.display = 'none';
 
 const artMode = document.querySelector('.art-mode');
 
-// window.addEventListener("load", () => {
-//     let loader = document.querySelector(".loader");
+window.addEventListener("load", () => {
+    let loader = document.querySelector(".loader");
 
-//     loader.classList.add("loader--hidden");
+    loader.classList.add("loader--hidden");
 
-//     loader.addEventListener("transitionend", () => {
-//         document.body.removeChild(loader);
-//     });
-// });
+    loader.addEventListener("transitionend", () => {
+        document.body.removeChild(loader);
+    });
+
+    document.querySelector(".no-js").classList.remove('no-js');
+
+    checkSkillsHeight();
+
+
+    if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
+        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; 
+    }
+    
+});
 
 function createSwiper(container, pagination, nextButton, prevButton) {
     return new Swiper(container, {
@@ -203,46 +213,48 @@ const observer = new IntersectionObserver((entries, observer) => {
 
 // Observa a seção alvo
 observer.observe(targetSection);
+
+
 const radio1 = document.getElementById('radio1');
 
 // Marcar o radio1 como checked quando a página carregar
 radio1.checked = true;
-
 // Altura da DIV
 document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; 
 document.addEventListener('DOMContentLoaded', function () {
-    const radios = document.querySelectorAll('input[name="radio-btn"]');
-
-    
-
     function isInView(element) {
         const rect = element.getBoundingClientRect();
         const windowHeight = (window.innerHeight || document.documentElement.clientHeight);      
         const vertInView = (rect.top <= windowHeight) && ((rect.top + rect.height) >= 0);
         return (vertInView);
       }
-  
-    radios.forEach(radio => {
-      radio.addEventListener('change', function () {
-        const parentDiv = document.querySelector('#projects');
-        if (radio.id === 'radio1') {
-          parentDiv.style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
 
-          if(!isInView(document.querySelector('.first .projects-grid')))
-            document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (radio.id === 'radio2') {
-          parentDiv.style.maxHeight = (document.querySelector('.second .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';// Altere o estilo conforme necessário
-          
-          if(!isInView(document.querySelector('.second .projects-grid')))
-            document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        } else if (radio.id === 'radio3') {
-            parentDiv.style.maxHeight = (document.querySelector('.third .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
-            if(!isInView(document.querySelector('.third .projects-grid')))
+        const radios = document.querySelectorAll('input[name="radio-btn"]');
+        radios.forEach(radio => {
+            radio.addEventListener('change', function () {
+            const parentDiv = document.querySelector('#projects');
+            if (radio.id === 'radio1') {
+                parentDiv.style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
+    
+                if(!isInView(document.querySelector('.first .projects-grid')))
                 document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      });
+            } else if (radio.id === 'radio2') {
+                parentDiv.style.maxHeight = (document.querySelector('.second .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';// Altere o estilo conforme necessário
+                
+                if(!isInView(document.querySelector('.second .projects-grid')))
+                document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (radio.id === 'radio3') {
+                parentDiv.style.maxHeight = (document.querySelector('.third .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
+                if(!isInView(document.querySelector('.third .projects-grid')))
+                    document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+            });
+        });
     });
-  });
+
+
+
+
   
 ///////////////////////////////////////////////////////////////
 function checkSkillsHeight() {
@@ -585,14 +597,6 @@ checkOrientation();
 // Add event listener for orientation change
 window.addEventListener('resize', checkOrientation);
 /////////////////////////////////////////////////////////////////////
-let expandProjects = document.querySelector('.fa-chevron-down');
-function checkExpand() {
-    const projectsSection = document.getElementById('projects');
-    projectsSection.classList.toggle('projects-active');
-    expandProjects.classList.toggle('projects-active');
-}
-
-expandProjects.addEventListener('click', checkExpand);
 /////////////////////////////////////////////////////////////////////
 
 

@@ -581,7 +581,7 @@ body {
     width: calc(10vw + 10rem);
     height: calc(10vw + 10rem);
     border-radius: 50%;
-    background-image: url(./img/f918bc7ddb4658dcf4ce70a21b3fd31d.jpg);
+    background-image: url(./img/1711139827147_7b50u3_2_0_edit.jpg);
     background-size: cover;
     background-position: center;
     transition: background-image .6s ease;
@@ -829,6 +829,8 @@ body {
 
     display: flex;
     flex-direction: column;
+
+    min-height: 700px;
 
     overflow: clip;
     
