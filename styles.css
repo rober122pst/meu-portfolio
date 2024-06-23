@@ -693,12 +693,22 @@ body {
     font-size: calc(1.4vw + 1.2rem);
   }
   
-  .section-subtitle h2 p:nth-child(2) span {
+  .section-subtitle h2 p span {
     padding: 3px 5px;
     border-radius: 4px;
   
     color: var(--color-black);
     background: var(--color-white);
+  }
+
+  .section-subtitle h2 p::before {
+    content: "💻";
+  }
+  .cube-mode .section-subtitle h2 p::before {
+    content: "🧊";
+  }
+  .art-mode .section-subtitle h2 p::before {
+    content: "🎨";
   }
   
   .box-about h3 {

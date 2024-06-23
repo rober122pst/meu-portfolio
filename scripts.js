@@ -2,7 +2,7 @@
 //     window.history.replaceState({}, '', window.location.pathname.replace('.html', ''));
 // }
 
-document.querySelector('.notificacao').style.display = 'none';
+document.querySelector(".notificacao").remove();
 
 const artMode = document.querySelector('.art-mode');
 
@@ -12,7 +12,7 @@ window.addEventListener("load", () => {
     loader.classList.add("loader--hidden");
 
     loader.addEventListener("transitionend", () => {
-        document.body.removeChild(loader);
+        loader.remove();
     });
 
     document.querySelector(".no-js").classList.remove('no-js');
@@ -21,7 +21,9 @@ window.addEventListener("load", () => {
 
 
     if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
-        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; 
+        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
+
+        console.log('calculou');
     }
     
 });
@@ -305,7 +307,6 @@ function toggleMode(event) {
         boxAboutText.innerHTML = `
         <div class="section-subtitle">
         <h2 class="section-hidden">
-            <p>🎨</p>
             <p><span>Designer</span> e Desenhista</p>
         </h2>
         </div>
@@ -396,7 +397,6 @@ function toggleMode(event) {
         boxAboutText.innerHTML = `
         <div class="section-subtitle">
         <h2 class="section-hidden">
-            <p>💻</p>
             <p><span>Desenvolvedor</span> de Jogos</p>
         </h2>
         </div>
@@ -489,7 +489,6 @@ function toggleMode(event) {
         boxAboutText.innerHTML = `
         <div class="section-subtitle">
         <h2 class="section-hidden">
-            <p>🧊</p>
             <p><span>Modelador</span> e Designer 3D</p>
         </h2>
         </div>
@@ -563,6 +562,12 @@ function toggleMode(event) {
     skills.classList.remove('skills-active');
 
     checkSkillsHeight();
+
+    if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
+        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
+
+        console.log('calculou');
+    }
 }
 
 btnArt.addEventListener('click', toggleMode);
