@@ -20,11 +20,11 @@ window.addEventListener("load", () => {
     checkSkillsHeight();
 
 
-    if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
-        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
+    // if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
+    //     document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
 
-        console.log('calculou');
-    }
+    //     console.log('calculou');
+    // }
     
 });
 
@@ -186,29 +186,33 @@ initialObserver();
 const options = {
     root: null,
     rootMargin: '0px',
-    threshold:[0.02, 0.05]
+    threshold:[0.1, 0.2]
 }
 
 const fixedDiv = document.querySelector('.manual-navigation');
-const targetSection = document.querySelector('.arts-projects');
+const targetSection = document.querySelector('.projects-wrapper');
 
 // Cria um Intersection Observer
 const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            if(Math.round(entry.intersectionRatio * 100) >= 2 && window.innerHeight <= 850) {
+            if(Math.round(entry.intersectionRatio * 100) >= 10 && window.innerHeight <= 850) {
                 fixedDiv.style.visibility = 'visible';
                 fixedDiv.style.transform = 'translateY(0)';
                 fixedDiv.style.opacity = '1';
-            }else if(Math.round(entry.intersectionRatio * 100) >= 5) {
+            }else if(Math.round(entry.intersectionRatio * 100) >= 20) {
                 fixedDiv.style.visibility = 'visible';
                 fixedDiv.style.transform = 'translateY(0)';
                 fixedDiv.style.opacity = '1'; 
             }
+
+            console.log('observando artes');
         } else {
             fixedDiv.style.visibility = 'hidden';
             fixedDiv.style.transform = 'translateY(100%)';
             fixedDiv.style.opacity = '0';
+
+            console.log('não observando artes');
         }
     });
 }, options);
@@ -286,6 +290,8 @@ var hidden = false;
 let currentMode = btnProgrammer;
 
 function toggleMode(event) {
+    const aboutTechs = document.querySelector('.skills-content');
+
     const buttonClicked = event.target;
 
     if(buttonClicked === currentMode) {
@@ -295,7 +301,6 @@ function toggleMode(event) {
     hidden = false;
     
     const boxAboutText = document.querySelector('.box-about');
-    const aboutTechs = document.querySelector('.skills-content');
 
     if (buttonClicked === btnArt) {
         html.classList.add('art-mode');
@@ -303,6 +308,9 @@ function toggleMode(event) {
         html.classList.remove('cube-mode');
 
         currentMode = btnArt;
+
+        changeSkillsContent(btnArt);
+        changeProjectsContent(btnArt);
 
         boxAboutText.innerHTML = `
         <div class="section-subtitle">
@@ -330,6 +338,111 @@ function toggleMode(event) {
         `;
 
         ///////////////TECHS/////////////////
+        
+    } else if (buttonClicked === btnProgrammer) {
+        html.classList.add('programmer-mode');
+        html.classList.remove('art-mode');
+        html.classList.remove('cube-mode');
+
+        currentMode = btnProgrammer;
+
+        changeSkillsContent(btnProgrammer);
+        changeProjectsContent(btnProgrammer);
+
+        boxAboutText.innerHTML = `
+        <div class="section-subtitle">
+        <h2 class="section-hidden">
+            <p><span>Desenvolvedor</span> de Jogos</p>
+        </h2>
+        </div>
+
+        <h3 class="text-about section-hidden">
+            Sou um Desenvolvedor de Jogos com esperiências em
+            <p>Java, C#, GML, Unity e Game Maker</p>
+        </h3>
+
+        <h4 class="section-hidden">
+            Oi, sou o Rober, tenho 18 anos e sou louco por programação e jogos. Comecei a criar jogos no PowerPoint e Scratch quando tinha 6 anos e desde então minha curiosidade só aumentou. Adoro matemática e isso me ajuda muito na programação. Meu sonho é ser um desenvolvedor de jogos profissional, mas também curto explorar outras áreas da programação. Resumindo, sou um cara apaixonado por tecnologia, sempre aprendendo e animado para ver onde essa jornada vai me levar.
+        </h4>
+
+        <h4 class="section-hidden">
+            Abaixo está o <p>currículo</p> para download.
+        </h4>
+
+        <div class="button-cta section-hidden">
+            <a>Currículo</a>
+        </div>
+        `;
+
+        ///////////////TECHS/////////////////
+        
+        
+    } else if (buttonClicked === btn3d) {
+        html.classList.add('cube-mode');
+        html.classList.remove('art-mode');
+        html.classList.remove('programmer-mode');
+
+        currentMode = btn3d;
+
+        changeSkillsContent(btn3d);
+        changeProjectsContent(btn3d);
+
+        boxAboutText.innerHTML = `
+        <div class="section-subtitle">
+        <h2 class="section-hidden">
+            <p><span>Modelador</span> e Designer 3D</p>
+        </h2>
+        </div>
+
+        <h3 class="text-about section-hidden">
+            Sou um Modelador e Designer 3D
+            <p>Modelagem, Interiores, Render, C4D e Blender</p>
+        </h3>
+
+        <h4 class="section-hidden">
+        Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com o Blender 2.69. Com o tempo, me aventurei no Cinema 4D, onde me diverti criando animações de Minecraft e renderizações de interiores. Infelizmente, perdi a maior parte desse trabalho quando meu HD quebrou. :( Desde 2020, tenho me dedicado à modelagem de faces para o PES 21 usando o Blender. Já vendi várias dessas modelagens e até trabalhei para um patch por um tempo. Atualmente, estou aprimorando minhas habilidades em low poly pixel art, uma técnica que estou empregando no desenvolvimento do meu novo jogo. Cada projeto é uma nova oportunidade para aprender e crescer nesta área fascinante.
+        </h4>
+
+        <h4 class="section-hidden">
+            Abaixo está o <p>currículo</p> para download.
+        </h4>
+
+        <div class="button-cta section-hidden">
+            <a>Currículo</a>
+        </div>
+        `;
+        ///////////////TECHS/////////////////
+        
+    }
+
+    initialObserver();
+
+    let skills = document.getElementById('skills');
+    skills.classList.remove('skills-active');
+
+    checkSkillsHeight();
+
+    if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
+        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
+
+        console.log('calculou');
+    }
+
+    
+}
+
+const originalSkillsContent = document.querySelector('.skills-content').innerHTML;
+
+function changeSkillsContent(atualMode) {
+    const btnArt = document.querySelector('.art-btn');
+    const btnProgrammer = document.querySelector('.programmer-btn');
+    const btn3d = document.querySelector('.cube-btn');
+
+    const aboutTechs = document.querySelector('.skills-content');
+
+    if(atualMode === btnProgrammer) {
+        aboutTechs.innerHTML = originalSkillsContent;
+    }else if(atualMode === btnArt) {
         aboutTechs.innerHTML = `
         <h3>Habilidades</h3>
         <ul class="skills-techs icons-skills">
@@ -387,130 +500,7 @@ function toggleMode(event) {
                 </div>
             </ul>
         `;
-    } else if (buttonClicked === btnProgrammer) {
-        html.classList.add('programmer-mode');
-        html.classList.remove('art-mode');
-        html.classList.remove('cube-mode');
-
-        currentMode = btnProgrammer;
-
-        boxAboutText.innerHTML = `
-        <div class="section-subtitle">
-        <h2 class="section-hidden">
-            <p><span>Desenvolvedor</span> de Jogos</p>
-        </h2>
-        </div>
-
-        <h3 class="text-about section-hidden">
-            Sou um Desenvolvedor de Jogos com esperiências em
-            <p>Java, C#, GML, Unity e Game Maker</p>
-        </h3>
-
-        <h4 class="section-hidden">
-            Oi, sou o Rober, tenho 18 anos e sou louco por programação e jogos. Comecei a criar jogos no PowerPoint e Scratch quando tinha 6 anos e desde então minha curiosidade só aumentou. Adoro matemática e isso me ajuda muito na programação. Meu sonho é ser um desenvolvedor de jogos profissional, mas também curto explorar outras áreas da programação. Resumindo, sou um cara apaixonado por tecnologia, sempre aprendendo e animado para ver onde essa jornada vai me levar.
-        </h4>
-
-        <h4 class="section-hidden">
-            Abaixo está o <p>currículo</p> para download.
-        </h4>
-
-        <div class="button-cta section-hidden">
-            <a>Currículo</a>
-        </div>
-        `;
-
-        ///////////////TECHS/////////////////
-        aboutTechs.innerHTML = `
-        <h3>Techs</h3>
-            <ul class="skills-techs icons-skills">
-                <div class="skills-container section-hidden">
-                    <h2>C#</h2>
-                    <li><svg viewBox="0 0 15 15" fill="#fff" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M10 8V7H11V8H10Z"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M7.5 0.421143L14 4.21281V10.7872L7.5 14.5788L1 10.7872V4.21281L7.5 0.421143ZM6.33156 4C4.49159 4 3 5.49159 3 7.33156V7.66844C3 9.50841 4.49159 11 6.33156 11C6.84877 11 7.35887 10.8796 7.82148 10.6483L8.22361 10.4472L7.77639 9.55279L7.37426 9.75385C7.05052 9.91573 6.69352 10 6.33156 10C5.04387 10 4 8.95613 4 7.66844V7.33156C4 6.04387 5.04387 5 6.33156 5C6.69352 5 7.05052 5.08427 7.37426 5.24615L7.77639 5.44721L8.22361 4.55279L7.82148 4.35172C7.35887 4.12042 6.84877 4 6.33156 4ZM9 5V6H8V7H9V8H8V9H9V10H10V9H11V10H12V9H13V8H12V7H13V6H12V5H11V6H10V5H9Z" "></path> </g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>Java</h2>
-                    <li><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="5151e0c8492e5103c096af88a51e8d81"> <path display="inline" d="M193.918,208.369c-4.729-10.456-6.849-22.652-3.236-33.731c3.612-11.327,11.703-20.413,19.794-28.878 c22.525-22.531,50.285-39.085,72.316-61.986c12.197-12.573,22.278-27.634,25.762-44.937c2.864-12.695,1.496-25.764-1.117-38.337 c11.7,13.319,15.559,32.363,12.197,49.541c-3.608,19.292-14.316,36.344-26.886,51.031c-10.081,11.827-21.659,22.282-33.731,31.993 c-14.065,11.327-27.88,23.524-36.716,39.457c-7.472,12.943-9.215,28.876-4.11,42.942c8.341,24.146,27.756,42.071,38.338,64.848 c-11.703-10.332-23.152-21.036-33.86-32.361C211.471,236.001,200.889,223.307,193.918,208.369z M257.398,189.448 c-2.115,19.792,8.213,38.462,20.539,53.151c5.972,6.596,11.076,14.687,11.323,23.899c0.251,12.318-6.716,23.774-15.684,31.861 c2.119-0.246,3.612-2.115,5.355-3.11c13.443-8.589,26.385-19.418,32.982-34.227c4.357-10.083,3.362-22.034-2.362-31.371 c-6.724-10.953-15.559-20.662-20.786-32.61c-2.867-6.721-3.862-14.562-1.496-21.657c3.114-9.583,9.834-17.426,16.93-24.272 c19.54-18.544,43.189-31.743,65.844-46.179c-28.629,8.214-56.883,19.542-81.03,37.343 C273.702,153.727,259.515,169.658,257.398,189.448z M393.447,283.052c13.568,0.748,26.882,10.704,29.374,24.397 c2.366,11.825-3.358,23.524-10.705,32.485c-12.075,14.438-28.382,24.771-44.807,33.609c-1.622,0.991-2.99,2.237-4.235,3.608 c21.659-5.478,43.314-13.689,60.867-27.756c9.705-8.091,18.294-18.799,20.163-31.619c1.743-11.076-2.86-22.528-11.077-29.871 c-9.96-9.09-24.021-12.448-37.218-10.704c-7.593,0.995-15.931,2.613-21.158,8.961C380.877,284.921,386.971,282.429,393.447,283.052 z M123.22,318.647c16.303,4.357,33.108,5.603,49.787,6.724c14.936,0.995,29.875,1.246,44.937,1.12 c38.833-0.619,77.916-3.236,116.003-11.699c3.608-0.87,7.593-1.493,10.833-3.733c6.347-4.11,13.313-7.347,20.162-10.583 c-30.995,4.979-62.113,9.215-93.478,11.205c-31.74,1.991-63.731,3.236-95.593,1.121c-9.086-0.87-18.423-1.371-26.886-4.858 c-1.994-0.87-4.733-2.609-3.738-5.227c1.869-3.361,5.603-4.977,8.839-6.72c13.694-6.473,28.629-10.081,43.193-14.313 c-25.021-0.376-49.916,5.971-72.814,15.806c-5.105,2.491-10.83,4.481-14.936,8.714c-1.622,1.739-1.622,4.732,0.247,6.222 C113.511,315.787,118.487,317.28,123.22,318.647z M324.864,352.88c-21.784,3.859-43.694,7.472-65.726,8.589 c-24.147,1.618-48.294,0.247-72.191-2.241c-4.604-0.623-9.211-1.368-13.317-3.483c-2.116-1.246-4.231-3.236-4.106-5.854 c0.247-4.106,3.73-6.967,6.222-9.956c-7.715,2.739-15.434,5.599-21.906,10.708c-2.742,2.116-5.478,5.474-4.733,9.208 c1.125,4.356,5.356,6.97,9.09,8.96c9.208,4.733,19.54,6.846,29.625,8.714c25.511,4.11,51.527,4.235,77.167,2.488 c27.141-2.115,54.148-6.594,80.411-14.313C337.932,362.342,330.836,358.479,324.864,352.88z M188.068,395.951 c-6.97,1.99-14.066,4.357-19.79,8.957c-2.868,2.241-5.105,6.104-3.734,9.713c1.743,4.604,6.1,7.347,10.203,9.705 c10.708,5.854,22.78,8.589,34.604,10.708c26.765,4.229,54.27,3.608,80.908-1.12c15.806-2.989,31.615-7.221,46.301-13.815 c-9.584-3.984-18.917-8.467-27.878-13.693c-15.559,2.738-31.246,5.603-47.178,6.598c-21.032,1.618-42.319-0.125-63.355-2.738 c-4.98-1.121-11.202-1.618-14.563-5.976C181.847,400.677,185.828,398.063,188.068,395.951z M358.345,475.982 c17.424-3.604,34.977-7.719,50.908-15.806c4.976-2.867,11.076-5.979,12.698-11.95c0.87-5.725-5.105-8.714-9.337-11.08 c2.613,2.993,4.356,7.347,1.74,10.83c-4.357,5.853-11.821,8.091-18.42,10.332c-20.66,5.85-42.072,8.216-63.355,10.582 c-56.385,5.102-113.146,6.348-169.528,1.618c-18.92-1.994-38.217-4.109-56.264-10.829c-2.86-1.246-7.217-2.492-7.217-6.352 c1.117-3.354,4.357-5.227,7.217-6.845c12.945-6.595,27.384-10.207,41.822-11.077c-4.228-2.491-9.208-2.738-14.062-2.613 c-12.076,0.373-23.9,3.483-35.349,7.347c-9.834,3.604-19.916,7.59-27.76,14.811c-3.111,2.735-5.971,7.962-2.739,11.699 c4.98,5.353,12.699,6.72,19.54,8.338c38.338,6.599,77.171,10.328,116.011,11.699C255.781,488.184,307.684,485.942,358.345,475.982z M409.378,482.706c-23.402,7.468-47.672,11.574-71.822,14.936c-41.696,5.227-83.769,6.845-125.716,5.603 c-25.515-0.995-51.03-2.738-76.176-6.974c5.85,3.984,13.071,5.227,19.794,7.096c28.257,5.976,57.255,7.096,86.01,7.966 c42.19,0.748,84.387-0.87,125.962-7.468c19.669-3.48,39.459-7.715,57.13-16.927c9.215-4.854,18.552-12.326,20.163-23.152 C435.391,473.741,421.951,478.349,409.378,482.706z"> </path> </g> </g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>Game Maker Language (GML)</h2>
-                    <li><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_light_gamemaker2</title><path d="M16.011,2h0L30,16h0c-2.7,0-5.394.005-8.09,0q0,4.056,0,8.112C19.95,26.077,17.982,28.034,16.025,30h0L2,16.008H2ZM10.12,16.008,16.009,21.9q0-2.949,0-5.9c1.96,0,3.92.005,5.88,0-1.949-1.973-3.92-3.925-5.878-5.888Q13.064,13.058,10.12,16.008Z"></path></g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>HTML</h2>
-                    <li><svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>html5</title> <path d="M11.677 13.196l-0.289-3.387 12.536 0.004 0.287-3.268-16.421-0.004 0.87 9.983h11.374l-0.406 4.27-3.627 1.002-3.683-1.009-0.234-2.63h-3.252l0.411 5.198 6.757 1.807 6.704-1.798 0.927-10.166h-11.954zM2.914 1.045h26.172l-2.38 26.874-10.734 3.037-10.673-3.038z"></path> </g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>CSS</h2>
-                    <li><svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>css3</title> <path d="M24.235 6.519l-16.47-0.004 0.266 3.277 12.653 0.002-0.319 3.394h-8.298l0.3 3.215h7.725l-0.457 4.403-3.636 1.005-3.694-1.012-0.235-2.637h-3.262l0.362 4.817 6.829 2.128 6.714-1.912 1.521-16.675zM2.879 1.004h26.242l-2.387 26.946-10.763 3.045-10.703-3.047z"></path> </g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>JavaScript</h2>
-                    <li><svg fill="#ffffff" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" enable-background="new 0 0 512 512" xml:space="preserve"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g id="5151e0c8492e5103c096af88a51e75c7"> <path display="inline" fill-rule="evenodd" clip-rule="evenodd" d="M1.008,0.5C0.438,0.583,0.48,1.27,0.521,1.958 c0,169.668,0,339.31,0,508.974c169.364,1.135,340.808,0.162,510.979,0.486c0-170.309,0-340.61,0-510.918 C341.342,0.5,171.167,0.5,1.008,0.5z M259.893,452.167c-11.822,11.919-30.478,18.938-53.429,18.938 c-37.643,0-58.543-18.34-71.884-43.711c12.842-8.2,25.966-16.122,39.344-23.795c5.456,15.262,23.886,32.42,44.683,21.857 c13.183-6.699,11.661-27.01,11.661-49.054c0-45.773,0-98.578,0-139.872c-0.042-0.688-0.083-1.375,0.482-1.458 c15.707,0,31.413,0,47.116,0c0,36.788,0,78.402,0,117.529C277.866,395.199,280.91,430.988,259.893,452.167z M470.696,409.917 c-2.674,39.884-35.243,61.063-79.17,61.188c-43.062,0.124-70.624-19.013-87.433-48.567c12.085-8.317,25.778-15.017,38.375-22.822 c10.08,15.761,27.537,30.91,53.429,28.652c16.131-1.406,34.856-14.555,24.285-34.482c-5.127-9.66-17.516-14.567-28.656-19.425 c-35.352-15.424-76.828-29.571-72.861-84.992c1.327-18.514,9.852-31.525,20.889-40.796c11.311-9.5,26.46-15.867,46.629-16.511 c36.629-1.173,56.723,15.12,70.429,37.884c-11.664,8.891-24.514,16.608-37.401,24.281c-4.229-12.995-24.644-25.658-41.772-17.969 c-7.789,3.493-14.788,13.761-10.684,26.224c3.66,11.115,18.589,17.199,30.599,22.344 C433.706,340.486,474.331,355.693,470.696,409.917z"> </path> </g> </g></svg></li>                    
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>Python</h2>
-                    <li><svg fill="#000000" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>python</title> <path d="M19.212 26.447l-0.287 0.412-0.1 0.512 0.1 0.512 0.287 0.412 0.412 0.287 0.512 0.1 0.512-0.1 0.412-0.287 0.287-0.412 0.1-0.512-0.1-0.512-0.287-0.412-0.412-0.287-0.512-0.1-0.512 0.1zM27.297 8.64l0.35 0.075 0.4 0.15 0.437 0.225 0.45 0.337 0.45 0.437 0.437 0.587 0.4 0.737 0.35 0.912 0.262 1.1 0.175 1.3 0.062 1.537-0.075 1.537-0.2 1.3-0.3 1.075-0.4 0.887-0.45 0.712-0.5 0.562-0.525 0.412-0.525 0.3-0.5 0.2-0.45 0.112-0.4 0.062-0.3 0.025-0.2-0.012h-10.272v1.025h7.298l0.012 3.449 0.025 0.45-0.062 0.425-0.137 0.387-0.212 0.362-0.312 0.312-0.387 0.3-0.475 0.25-0.55 0.212-0.637 0.187-0.725 0.162-0.8 0.112-0.887 0.087-0.962 0.050-1.050 0.012-1.587-0.050-1.337-0.175-1.125-0.25-0.912-0.312-0.737-0.375-0.562-0.412-0.425-0.425-0.312-0.425-0.2-0.412-0.125-0.375-0.050-0.312-0.025-0.25 0.012-0.162v-6.673l0.063-0.8 0.162-0.675 0.262-0.575 0.325-0.475 0.375-0.4 0.412-0.3 0.437-0.25 0.437-0.175 0.412-0.125 0.375-0.075 0.325-0.050 0.262-0.025 0.162-0.012h7.298l0.862-0.062 0.737-0.175 0.625-0.262 0.512-0.35 0.412-0.4 0.337-0.437 0.25-0.45 0.187-0.45 0.125-0.437 0.087-0.4 0.050-0.35 0.025-0.262v-3.824h2.612l0.175 0.012zM10.939 3.704l-0.287 0.412-0.1 0.512 0.1 0.512 0.287 0.425 0.412 0.275 0.512 0.112 0.512-0.113 0.412-0.275 0.287-0.425 0.1-0.512-0.1-0.512-0.287-0.412-0.412-0.275-0.512-0.112-0.512 0.112zM18.812 1.229l1.125 0.25 0.912 0.325 0.737 0.375 0.562 0.4 0.425 0.425 0.312 0.425 0.2 0.412 0.125 0.375 0.050 0.325 0.025 0.25-0.012 0.162v6.673l-0.062 0.787-0.162 0.687-0.262 0.575-0.325 0.475-0.375 0.387-0.412 0.312-0.437 0.237-0.437 0.175-0.412 0.125-0.375 0.087-0.325 0.050-0.263 0.025h-7.46l-0.862 0.062-0.737 0.175-0.625 0.275-0.512 0.337-0.412 0.4-0.337 0.437-0.25 0.45-0.187 0.462-0.125 0.437-0.087 0.4-0.050 0.337-0.025 0.262v3.824h-2.787l-0.262-0.037-0.35-0.087-0.4-0.15-0.437-0.225-0.45-0.325-0.45-0.45-0.437-0.575-0.4-0.737-0.35-0.912-0.262-1.1-0.175-1.312-0.062-1.537 0.075-1.524 0.2-1.3 0.3-1.087 0.4-0.887 0.45-0.712 0.5-0.55 0.525-0.412 0.525-0.3 0.5-0.2 0.45-0.125 0.4-0.062 0.3-0.012h0.2l0.075 0.012h10.197v-1.037h-7.298l-0.012-3.436-0.025-0.462 0.062-0.425 0.137-0.387 0.212-0.35 0.312-0.325 0.387-0.287 0.475-0.25 0.55-0.225 0.637-0.187 0.725-0.15 0.8-0.125 0.887-0.075 0.962-0.050 1.050-0.025 1.587 0.063z"></path> </g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                            <h2>TensorFlow</h2>
-                            <li><svg fill="#ffffff" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>tensorflow</title> <path d="M29.399 14.959l-0.017-6.636-12.806-7.319v29.991l5.117-2.972v-8.438l3.864 2.234-0.023-5.771-3.841-2.194v-3.35l7.708 4.454zM2.619 8.322l12.806-7.318v29.991l-5.117-2.972v-17.519l-7.708 4.454 0.019-6.636z"></path> </g></svg></li>
-                        </div>
-                        <div class="skills-container section-hidden">
-                            <h2>ChatGPT</h2>
-                            <li><svg viewBox='0 0 320 320' xmlns='http://www.w3.org/2000/svg'>
-                                <path d='m297.06 130.97c7.26-21.79 4.76-45.66-6.85-65.48-17.46-30.4-52.56-46.04-86.84-38.68-15.25-17.18-37.16-26.95-60.13-26.81-35.04-.08-66.13 22.48-76.91 55.82-22.51 4.61-41.94 18.7-53.31 38.67-17.59 30.32-13.58 68.54 9.92 94.54-7.26 21.79-4.76 45.66 6.85 65.48 17.46 30.4 52.56 46.04 86.84 38.68 15.24 17.18 37.16 26.95 60.13 26.8 35.06.09 66.16-22.49 76.94-55.86 22.51-4.61 41.94-18.7 53.31-38.67 17.57-30.32 13.55-68.51-9.94-94.51zm-120.28 168.11c-14.03.02-27.62-4.89-38.39-13.88.49-.26 1.34-.73 1.89-1.07l63.72-36.8c3.26-1.85 5.26-5.32 5.24-9.07v-89.83l26.93 15.55c.29.14.48.42.52.74v74.39c-.04 33.08-26.83 59.9-59.91 59.97zm-128.84-55.03c-7.03-12.14-9.56-26.37-7.15-40.18.47.28 1.3.79 1.89 1.13l63.72 36.8c3.23 1.89 7.23 1.89 10.47 0l77.79-44.92v31.1c.02.32-.13.63-.38.83l-64.41 37.19c-28.69 16.52-65.33 6.7-81.92-21.95zm-16.77-139.09c7-12.16 18.05-21.46 31.21-26.29 0 .55-.03 1.52-.03 2.2v73.61c-.02 3.74 1.98 7.21 5.23 9.06l77.79 44.91-26.93 15.55c-.27.18-.61.21-.91.08l-64.42-37.22c-28.63-16.58-38.45-53.21-21.95-81.89zm221.26 51.49-77.79-44.92 26.93-15.54c.27-.18.61-.21.91-.08l64.42 37.19c28.68 16.57 38.51 53.26 21.94 81.94-7.01 12.14-18.05 21.44-31.2 26.28v-75.81c.03-3.74-1.96-7.2-5.2-9.06zm26.8-40.34c-.47-.29-1.3-.79-1.89-1.13l-63.72-36.8c-3.23-1.89-7.23-1.89-10.47 0l-77.79 44.92v-31.1c-.02-.32.13-.63.38-.83l64.41-37.16c28.69-16.55 65.37-6.7 81.91 22 6.99 12.12 9.52 26.31 7.15 40.1zm-168.51 55.43-26.94-15.55c-.29-.14-.48-.42-.52-.74v-74.39c.02-33.12 26.89-59.96 60.01-59.94 14.01 0 27.57 4.92 38.34 13.88-.49.26-1.33.73-1.89 1.07l-63.72 36.8c-3.26 1.85-5.26 5.31-5.24 9.06l-.04 89.79zm14.63-31.54 34.65-20.01 34.65 20v40.01l-34.65 20-34.65-20z'/>
-                                </svg></li>
-                        </div>
-                        <div class="skills-container section-hidden">
-                            <h2>Excel</h2>
-                            <li><svg height="200px" width="200px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 26 26" xml:space="preserve" ><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M25.162,3H16v2.984h3.031v2.031H16V10h3v2h-3v2h3v2h-3v2h3v2h-3v3h9.162 C25.623,23,26,22.609,26,22.13V3.87C26,3.391,25.623,3,25.162,3z M24,20h-4v-2h4V20z M24,16h-4v-2h4V16z M24,12h-4v-2h4V12z M24,8 h-4V6h4V8z"></path> <path  d="M0,2.889v20.223L15,26V0L0,2.889z M9.488,18.08l-1.745-3.299c-0.066-0.123-0.134-0.349-0.205-0.678 H7.511C7.478,14.258,7.4,14.494,7.277,14.81l-1.751,3.27H2.807l3.228-5.064L3.082,7.951h2.776l1.448,3.037 c0.113,0.24,0.214,0.525,0.304,0.854h0.028c0.057-0.198,0.163-0.492,0.318-0.883l1.61-3.009h2.542l-3.037,5.022l3.122,5.107 L9.488,18.08L9.488,18.08z"></path> </g> </g></svg></li>
-                        </div>
-            </ul>
-            <h3>Softwares</h3>
-            <ul class="skills-software icons-skills">
-                <div class="skills-container section-hidden">
-                    <h2>Game Maker Studio 2</h2>
-                    <li><svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><title>file_type_light_gamemaker2</title><path d="M16.011,2h0L30,16h0c-2.7,0-5.394.005-8.09,0q0,4.056,0,8.112C19.95,26.077,17.982,28.034,16.025,30h0L2,16.008H2ZM10.12,16.008,16.009,21.9q0-2.949,0-5.9c1.96,0,3.92.005,5.88,0-1.949-1.973-3.92-3.925-5.878-5.888Q13.064,13.058,10.12,16.008Z"></path></g></svg></li>
-                </div>
-                <div class="skills-container section-hidden">
-                    <h2>Unity</h2>
-                    <li><svg fill="#ffffff" viewBox="-0.5 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="m15.266 12.001 4.2-7.249 2.03 7.253-2.03 7.25-4.2-7.25zm-2.047 1.177 4.201 7.254-7.316-1.876-5.285-5.378zm4.2-9.608-4.2 7.253h-8.4l5.285-5.378 7.314-1.875zm6 5.963-2.566-9.533-9.564 2.555-1.416 2.489-2.873-.021-7 6.978 7 6.977 2.871-.022 1.418 2.489 9.564 2.554 2.56-9.531-1.453-2.468z"></path></g></svg></li>
-                </div>
-            </ul>
-        </div>
-        `;
-    } else if (buttonClicked === btn3d) {
-        html.classList.add('cube-mode');
-        html.classList.remove('art-mode');
-        html.classList.remove('programmer-mode');
-
-        currentMode = btn3d;
-
-        boxAboutText.innerHTML = `
-        <div class="section-subtitle">
-        <h2 class="section-hidden">
-            <p><span>Modelador</span> e Designer 3D</p>
-        </h2>
-        </div>
-
-        <h3 class="text-about section-hidden">
-            Sou um Modelador e Designer 3D
-            <p>Modelagem, Interiores, Render, C4D e Blender</p>
-        </h3>
-
-        <h4 class="section-hidden">
-        Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com o Blender 2.69. Com o tempo, me aventurei no Cinema 4D, onde me diverti criando animações de Minecraft e renderizações de interiores. Infelizmente, perdi a maior parte desse trabalho quando meu HD quebrou. :( Desde 2020, tenho me dedicado à modelagem de faces para o PES 21 usando o Blender. Já vendi várias dessas modelagens e até trabalhei para um patch por um tempo. Atualmente, estou aprimorando minhas habilidades em low poly pixel art, uma técnica que estou empregando no desenvolvimento do meu novo jogo. Cada projeto é uma nova oportunidade para aprender e crescer nesta área fascinante.
-        </h4>
-
-        <h4 class="section-hidden">
-            Abaixo está o <p>currículo</p> para download.
-        </h4>
-
-        <div class="button-cta section-hidden">
-            <a>Currículo</a>
-        </div>
-        `;
-        ///////////////TECHS/////////////////
+    }else if(atualMode === btn3d) {
         aboutTechs.innerHTML = `
         <h3>Habilidades</h3>
         <ul class="skills-techs icons-skills">
@@ -545,28 +535,892 @@ function toggleMode(event) {
             </ul>
         `;
     }
+}
 
-    if(!hidden) {
-        document.querySelectorAll('.section-show').forEach(section => {
-            section.classList.remove('section-show');
-            section.classList.add('section-hidden');
-        });
-        document.querySelectorAll('.section-show-project').forEach(section => {
-            section.classList.remove('section-show-project');
-            section.classList.add('section-hidden');
-        });
-        initialObserver();
-    }
+const originalProjectContent = document.getElementById('projects').innerHTML;
 
-    let skills = document.getElementById('skills');
-    skills.classList.remove('skills-active');
+function changeProjectsContent(atualMode) {
+    const btnArt = document.querySelector('.art-btn');
+    const btnProgrammer = document.querySelector('.programmer-btn');
+    const btn3d = document.querySelector('.cube-btn');
 
-    checkSkillsHeight();
+    const textProjects = document.querySelector('.projects-wrapper');
 
-    if((document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) > 301) {
-        document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';
+    if(atualMode === btnProgrammer) {
+        textProjects.innerHTML = originalProjectContent;
+    }else if(atualMode === btnArt) {
+        textProjects.innerHTML = `
+        <div class="projects-title">
+            <h2>ARTES</h2>
+        </div>
+        
+        <div class="arts-projects">
+            
+            <div class="sliders first">
+                <div class="art-title section-hidden">
+                    <h2>
+                        Pixel Arts
+                    </h2>
+                </div>
+                <div class="projects-grid">               
+                    <div class="l-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/5vz05O">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife</h3>
+                                    <p>Eterno símbolo de orgulho é o pavilhão, de listras pretas e vermelhas com o Leão. A bandeira do Sport Club do Recife no topo do mastro. Feita para um desafio semanal. Minha primeira animação com uma paleta de cores coloridas.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Dimensões: </b>290x290 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/SPORTRECIFE1.gif" alt="sport-recife">
+                        </a>
+                    </div>
 
-        console.log('calculou');
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/aowyY2">
+                            <img src="./img/projects/projects-arts/spider-man.gif" alt="spiderman">
+                        
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Spider-Man</h3>
+                                    <p>Peguei uma print do jogo <b>Marvel's Spider-Man</b> que eu tirei e desenhei isso para o desafio da semana. no cenário fiz o Empire State para representar New York. A águia voando é para deixar a cena mais legal e mostrar o quão alto o Aranha está observando sua cidade. Além de ser um símbolo americano.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Dimensões: </b>240x135 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="l-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/BXAYZ9">
+                            <img src="./img/projects/projects-arts/FOXY.png" alt="foxy-fnaf">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Nightmare Foxy</h3>
+                                    <p>Uma arte simples do Foxy para o desafio semanal. Gosto muito de usar paletas monocromáticas. Foram utilizadas 9 cores apenas.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Abril de 2024</p>
+                                    <p><b>Dimensões: </b>128x128 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>                    
+                    </div>  
+    
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ob4K3m">
+                            <img src="./img/projects/projects-arts/youlooklonely.png" alt="you-look-lonely">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>You Look Lonely</h3>
+                                    <p>Minha primeira pixel art de canvas grande. Como fiz essa quando tava començando a aprender, usei uma camada de referencia para desenhar a Ana de Armas. Na época não sabia muito bem usar as cores em pixel art, então usei bastante o conta gotas.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Outubro de 2023</p>
+                                    <p><b>Dimensões: </b>209x116 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>     
+                    
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/ob4Kam">
+                            <img src="./img/projects/projects-arts/spiderman.gif" alt="spiderman-perfil">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Spider-Man</h3>
+                                    <p>O tema semanal dessa vez foi <b>dicotomia.</b> Então pensei logo no Homem-Aranha e no Venom.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Fevereiro de 2024</p>
+                                    <p><b>Dimensões: </b>61x61 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/1xAO5o">
+                            <img src="./img/projects/projects-arts/darkfantasy.png" alt="dark-fantasy">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Dark Fantasy</h3>
+                                    <p>Usei 10 cores para fazer esta arte. Peguei muitas dicas fazendo ela.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Janeiro de 2024</p>
+                                    <p><b>Dimensões: </b>180x180 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/Kendqx">
+                            <img src="./img/projects/projects-arts/LifeIsStrange.png" alt="life-is-strange-butterfly">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Teoria do Caos</h3>
+                                    <p>Esta ação terá consequencias.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Maio de 2024</p>
+                                    <p><b>Dimensões: </b>137x158 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/w01K16">
+                            <img src="./img/projects/projects-arts/games.gif" alt="games-art">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Game Night</h3>
+                                    <p>Nessa arte minha intenção foi passar uma sensação de calma e nostalgia. Consegui superar minhas limitações fazendo esta arte, já que foi quando tava começando a aprender ainda.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Dezembro de 2023</p>
+                                    <p><b>Dimensões: </b>215x193 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="v-img section-hidden">
+                        <a href="">
+                            <img src="./img/projects/projects-arts/sea.png" alt="sea">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Mar</h3>
+                                    <p>Minha primeira tentativa de desenhar um mar. Usei uma paleta de 6 cores para ficar mais facil.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Fevereiro de 2024</p>
+                                    <p><b>Dimensões: </b>150x219 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/g0kKrZ">
+                            <img src="./img/projects/projects-arts/drive1.png" alt="i-drive">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Drive</h3>
+                                    <p>Quis passar uma sensação retrô nessa arte, assim comom os posters do filme. Por isso usei bastande dithering e uma paleta bem limitada.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Janeiro de 2024</p>
+                                    <p><b>Dimensões: </b>250x173 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    
+                    <div class="h-img section-hidden">
+                        <a href="">
+                            <img src="./img/projects/projects-arts/Dido1.gif" alt="dido">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Thank You - Dido</h3>
+                                    <p>Peguei algumas referências do clipe da música e o quarto que aparece nele, juntei tudo e desenhei. Como o chá esfriando, a janela com a paisagem cinza, as fotos na parede, etc.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Dimensões: </b>227x183 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="v-img section-hidden">
+                        <a href="">
+                            <img src="./img/projects/projects-arts/natal.gif" alt="natal">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Merry Christmas</h3>
+                                    <p>Uma das minhas artes favoritas, fiz bem no dia 24 de Dezembro.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Dezembro de 2023</p>
+                                    <p><b>Dimensões: </b>165x305 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="h-img section-hidden">
+                        <a href="">
+                            <img src="./img/projects/projects-arts/Stan.gif" alt="stan">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>Stan</h3>
+                                    <p>Essa arte fiz junto com a Thank you. Foi para o desafio da semana, que era transformar um trecho de uma musica em desenho. Como a musica "Thank You" da Dido tem o mesmo refrão da musica "Stan" e passam duas sensações bem diferentes, achei legal e juntei as duas em um vídeo.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Dimensões: </b>227x183 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                    <div class="h-img section-hidden">
+                        <a href="">
+                            <img src="./img/projects/projects-arts/LaLaLand.png" alt="lalaland">
+                            <div class="infos-arts">                        
+                                <div class="title">
+                                    <h3>City of Stars</h3>
+                                    <p>Uma arte para um dos meus filmes favoritos, La La Land. Acho o poster do filme muito bonito, a tonalidade das cores é muito linda.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Dezembro de 2023</p>
+                                    <p><b>Dimensões: </b>165x305 px</p>
+                                    <p><b>Ferramentas: </b>Aseprite</p>
+                                    <p><b>Categoria </b>Pixel Art</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+    
+                </div>
+            </div>
+            
+            <div class="sliders second">
+                <div class="art-title section-hidden">
+                    <h2>
+                        Desenhos Tradicionais
+                    </h2>
+                </div>
+                <div class="projects-grid">
+
+                    <div class="v-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/1xAPY8" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Clementine</h3>
+                                    <p>Um desenho da personagem principal dos jogos <b>The Walking Dead</b> da Telltale. Aqui fiz tudo no olhometro e usei os lápis HB, 2B, 4B e 6B da Faber Castell. Uma curiosidade é que fiz esse densenho durante uma festa de aniversário, subi pro quarto da minha avó e só sai quando terminei. Eu gosto muito desse desenho.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Outubro de 2022</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho, Caneta Preta</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/clementine.jpg" alt="clementine">
+                        </a>
+                    </div>     
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/qeqmRa" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Twisted Wolf</h3>
+                                    <p>Esboço do Twisted Wolf do livro <b>FNAF: The Silver Eyes</b>.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Setembro de 2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/fnaf.jpg" alt="twisted-wolf">
+                        </a>
+                    </div>
+
+                    <div class="l-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/Ev3oDe" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Jinx</h3>
+                                    <p>O meu desenho favorito que nunca foi acabado. Decalquei botando uma foto da Jinx na televisão e o papel por cima, fiz dessa forma pois queria que o desenho fosse perfeito e focar mais no treino de sombreamento.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Dezembro de 2022</p>
+                                    <p><b>Dimensões: </b>Folha A3 120 g/m²</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho, Caneta Preta</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/jinx.jpg" alt="jinx">
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/WByDQD" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>It.</h3>
+                                    <p>Fiz esse desenho para testar minhas canetas Nanquim e lápis de cor.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho <br> Nanquim, <br> Lápis de cor</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/it.jpg" alt="it-a-coisa">
+                        </a>
+                    </div>
+
+                    <div class="l-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ZaKQW0" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Moon Knight</h3>
+                                    <p>Depois de praticamente 4 anos sem desenhar fiz esse desenho do Cavaleiro da Lua. Um dos meus preferidos, fiz tudo no olhometro. Mesmo sem praticar por tanto tempo, da pra ver como eu amadureci.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2022</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/cavaleirolua.jpg" alt="moon-knight">
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/GexnPa" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Lion</h3>
+                                    <p>Tava sem nada para fazer, então resolvi desenhar esse leão bem rapidinho.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Novembro de 2018</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite HB</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/leao.jpg" alt="sport-recife">
+                        </a>
+                    </div>
+
+                    <div class="v-img section-hidden">
+                            <div>
+
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Deadpool</h3>
+                                        <p>Meu primeiro desenho colorido. Fiz quando criança então tem muitas manchas e erros, mas ainda sim é um bom desenho.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Dezembro de 2017</p>
+                                        <p><b>Dimensões: </b>Papel A4</p>
+                                        <p><b>Ferramentas: </b>Grafite, Lápis de cor</p>
+                                    </div>
+                                </div>
+                                <img src="./img/projects/projects-arts/desenhos-tradicionais/deadpool.jpg" alt="deadpool">
+                            </div>
+                    </div>
+
+                    <div class="section-hidden">
+                        <div>
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Foxy</h3>
+                                    <p>Desenhei para passar o tempo na escola.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Setembro de 2017</p>
+                                    <p><b>Dimensões: </b>Folha de caderno</p>
+                                    <p><b>Ferramentas: </b>Caneta, Lápis de cor</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/foxy.jpg" alt="foxy-desenho">
+                        </div>
+                    </div>
+
+                    <div class="v-img section-hidden">
+                        <div>
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Magrão</h3>
+                                    <p>Ídolo do Sport Recife. Imprimi uma foto dele e botei em baixo do papel com uma lanterna.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Outubro de 2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/magrao.jpg" alt="magrao-sport">
+                        </div>
+                    </div>
+
+                    <div class="section-hidden">
+                        <div>
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Bendy</h3>
+                                    <p>Desenho que fiz para o meu amigo na escola.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho, <br> Lápis de Cor</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/bendy.jpg" alt="bendy">
+                        </div>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/39A2bD" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Mbappe</h3>
+                                    <p>Usei a tecninca dos quadradinhos para fazer esse desenho aqui. Minha dificuldade foi fazer o corte de cabelo dele.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2022</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/mbappe.jpg" alt="mbappe">
+                        </a>
+                    </div>
+
+                    <div class="v-img section-hidden">
+                        <div>
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Durval</h3>
+                                    <p>Fiz da mesma forma que o Magrão.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/durval.jpg" alt="durval">
+                        </div>
+                    </div>
+
+                    <div class="section-hidden">
+                        <div>
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Nick</h3>
+                                    <p>Nunca acabei esse desenho e nem posso terminar, pois perdi a imagem. É um desenho do meu falecido cachorro, por isso guardo com tanto carinho.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2017</p>
+                                    <p><b>Dimensões: </b>Folha A4</p>
+                                    <p><b>Ferramentas: </b>Grafite, Esfuminho</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/nick.jpg" alt="sport-recife">
+                        </div>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/04AQEe" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Spider Gwen</h3>
+                                    <p>Desenho simples da Gwen que fiz na escola. Pretendo fazer o sombreado depois.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2023</p>
+                                    <p><b>Dimensões: </b>Folha A4 120 g/m²</p>
+                                    <p><b>Ferramentas: </b>Grafite</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/gwen.jpg" alt="gwen-stacy">
+                        </a>
+                    </div>
+
+                    <div class="footer-1 section-hidden">
+                        <a href="">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Batman</h3>
+                                    <p>Tributo a uns dos melhores desenhos que fiz, mas acabei perdendo. Era tão bom que tive que botar aqui. Foi o meu primeiro desenho usando a caneta para o sombreamento.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2017</p>
+                                    <p><b>Dimensões: </b>Folha A3</p>
+                                    <p><b>Ferramentas: </b>Caneta</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/desenhos-tradicionais/batman.jpg" alt="batman" style="opacity: .1;">
+                        </a>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="sliders third">
+                <div class="art-title section-hidden">
+                    <h2>
+                        Designer
+                    </h2>
+                </div>
+                <div class="projects-grid"> 
+                    
+                    <div class=" section-hidden">
+                        <a href="https://www.artstation.com/artwork/zPb3rd" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Home - 2021</h3>
+                                    <p>Uniforme 1 do Sport para a temporada 2021. Aperte para ver mais detalhes da textura.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2021.gif" alt="sport-recife-2021">
+                        </a>
+                    </div>     
+
+                    <div class=" section-hidden">
+                        <a href="https://www.artstation.com/artwork/zPb3rd" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Away - 2021</h3>
+                                    <p>Uniforme 2 do Sport para a temporada 2021. Aperte para ver mais detalhes da textura.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2021away.gif" alt="sport-recife-2021-away">
+                        </a>
+                    </div>    
+                    
+                    <div class=" section-hidden">
+                        <a href="https://www.artstation.com/artwork/zPb3rd" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Third - 2021</h3>
+                                    <p>Uniforme 2 do Sport para a temporada 2021. Fiz o desenho da camisa todo no Corel. Aperte para ver mais detalhes da textura.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender, Corel DRAW</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sportlaranja.gif" alt="sport-recife-laranja">
+                        </a>
+                    </div>    
+
+                    <div class=" section-hidden">
+                        <a href="https://www.artstation.com/artwork/zPb3rd" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport GK - 2021</h3>
+                                    <p>Camisa do goleiro da temporada 2021. Aperte para ver mais detalhes da textura.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2021gk.gif" alt="sport-recife-2021-gk">
+                        </a>
+                    </div> 
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ao22X9" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Tri-Campeão</h3>
+                                    <p>Fiz esse uniforme e os outros 3 seguintes para o meu modo carreira do <b>Pro Evolution Soccer 2021</b> onde fui campeão da Copa do Brasil com o Sport, então fiz esse uniforme para comemorar o tri-nacional, colocando 3 estrelas douradas como símbolo e relembrando as camisas de 2009, ano seguinte da primeira Copa do Brasil.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/KIT 1.png" alt="sport-recife-tri">
+                        </a>
+                    </div>     
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ao22X9" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Tri-Campeão - Away Alt</h3>
+                                    <p>Segui a mesma ideia do primeiro uniforme, mas não queria fazer ele branco. Como o terceiro uniforme é dourado, eu fiz esse com cores parecidas com o primeiro mesmo.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/ALTERNATIVO.png" alt="sport-recife-away-alt-tri">
+                        </a>
+                    </div>     
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ao22X9" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Tri-Campeão - Away</h3>
+                                    <p>Versão final do segundo uniforme. Fiz ele todo vermelho para se distanciar um pouco mais do primeiro e de outros times com cores escuras.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/KIT 2.png" alt="sport-recife-away-tri">
+                        </a>
+                    </div>     
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/ao22X9" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Tri-Campeão - Libertadores</h3>
+                                    <p>Camisa dourada para lembrar a de 2009. Uniforme para celebrar a participação na Libertadores no game.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Março de 2024</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/LIBERTADORES.png" alt="sport-recife-third-tri">
+                        </a>
+                    </div>    
+                    
+                    
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife GK - 2008</h3>
+                                    <p>Uniforme icônico usada pelo ídolo Magrão em 2008. Fiz ela para tirar a print com a face do Magrão.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Agosto de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2008.gif" alt="sport-recife-2008">
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Home - 2022</h3>
+                                    <p>Uniforme 1 do Sport para 2022. Fazer o desenho da camisa aqui foi bem complicado.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Maio de 2022</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2022.gif" alt="sport-recife-2022">
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Away - 2022</h3>
+                                    <p>Uniforme 2 do Sport para 2022.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Maio de 2022</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2022away.gif" alt="sport-recife-2022-away">
+                        </a>
+                    </div>
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Corinthians - 1995</h3>
+                                    <p>Camisa retrô do Corinthians feita para Patch.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Agosto de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/corinthians.gif" alt="corinthians">
+                        </a>
+                    </div>
+                                
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife Concept Kit - Home</h3>
+                                    <p>Kits que fiz para o meu modo carreira no PES 21. Vou ser sincero, não sou muito fã desses. Nesse eu me inspirei no uniforme do Barcelona em 2020.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Julho de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2024mf.png" alt="sport-recife-concept">
+                        </a>
+                    </div>     
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife Concept Kit - Away</h3>
+                                    <p>Fiz o branco clássico.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Julho de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2024mfaway.png" alt="sport-recife-concept-away">
+                        </a>
+                    </div>     
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife Concept Kit - Third</h3>
+                                    <p>Nesse aqui quis fazer igual a uma camisa da Alemanha que é toda preta.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Julho de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2024mfthird.png" alt="sport-recife-concept-third">
+                        </a>
+                    </div>    
+
+                    <div class="h-img section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Sport Recife Home - 2023</h3>
+                                    <p>Uniforme 1 do Sport em 2023.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Abril de 2023</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sport2023.png" alt="sport-recife-2023">
+                        </a>
+                    </div>
+                    
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Guarani - 1994</h3>
+                                    <p>Mais um uniforme retrô feito para um patch. Aqui foi bastante divertido fazer a textura da camisa.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Agosto de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/guarani.gif" alt="guarani">
+                        </a>
+                    </div>                                  
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Santo André - 1994</h3>
+                                    <p>Esse uniforme é mais um feito para o patch.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Agosto de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/santoandre.gif" alt="santo-andre">
+                        </a>
+                    </div>                                  
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Imperatriz</h3>
+                                    <p>Esse foi um pedido feito para um cliente. Uniforme do Imperatriz da temporada 2021.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Maio de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/imperatriz.gif" alt="imperatriz">
+                        </a>
+                    </div>                                  
+
+                    <div class="section-hidden">
+                        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+                            <div class="infos-arts">
+                                <div class="title">
+                                    <h3>Jogos Internos</h3>
+                                    <p>Essas camisas fiz para entrar em uma votação para saber qual seria a camisa do Interclasse da escola. Teria quer te uma preta, azul, vermelha, verde e amarela. Fiz essas camisas na época em que meu PC tinha quebrado, então foi muito perrengue.</p>
+                                </div>
+                                <div class="infos">
+                                    <p><b>Data: </b>Agosto de 2021</p>
+                                    <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                                </div>
+                            </div>
+                            <img src="./img/projects/projects-arts/design/sesi.gif" alt="sesi">
+                        </a>
+                    </div>  
+
+                </div>
+            </div>
+        </div>`;
+    }else if(atualMode === btn3d) {
+        textProjects.innerHTML = `
+        <div class="projects-title">
+            <h2>PROJETOS</h2>
+        </div>
+        `;
     }
 }
 
