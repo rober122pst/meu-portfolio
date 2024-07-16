@@ -183,7 +183,6 @@ body {
 }
 
 .navbar {
-    max-width: 350px;
     width: 100%;
 }
 
@@ -295,7 +294,7 @@ body {
     }
 
     .navbar-geral.active .navbar {
-        width: 50%;
+        width: 100%;
         visibility: visible;
         overflow-y: auto;
     }
@@ -588,9 +587,15 @@ body {
 }
 
 .mode {
-  border-top: 2px solid var(--color-white);
-  border-bottom: 2px solid var(--color-white);
-  margin-top: 2rem;
+  position: fixed;
+  left: 3rem;
+  bottom: 3rem;
+  
+  background-color: var(--color-black);
+  border-radius: 15px;
+  border: 2px solid var(--color-main);
+
+  z-index: 5;
 }
 
 .mode i {

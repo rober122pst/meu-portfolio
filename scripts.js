@@ -72,6 +72,9 @@ function updateSwiper() {
 window.addEventListener('resize', function() {
     updateSwiper();
 });
+window.addEventListener('scroll', function() {
+    updateSwiper();
+});
 
 // Executa a função uma vez ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
@@ -85,7 +88,7 @@ window.addEventListener('scroll', () => {
 })
 
 function navbarColor() {
-    if(window.scrollY >= 80){
+    if(window.scrollY >= 10){
         header.style.background = '#191919';
         header.style.boxShadow = '0px 5px 9px 0px #0c0c0c';
     }else {
@@ -96,17 +99,19 @@ function navbarColor() {
 
 const btnMobile = document.querySelector('.burguer');
 
+var cont = false;
 function toggleMenu() {
     const nav = document.querySelector('.navbar-geral');
-    if(header.style.background === 'transparent' || window.scrollY >= 80) {
+    if((header.style.background === 'transparent' || window.scrollY >= 10) && !cont) {
         header.style.background = '#191919'
         header.style.boxShadow = '0px 5px 9px 0px #0c0c0c';
         console.log('Fechou');
-    }else {
+    }else{
         header.style.background = 'transparent'
         header.style.boxShadow = '0px 0px 0px 0px transparent';
     }
     nav.classList.toggle('active');
+    cont = !cont;
 }
 
 btnMobile.addEventListener('click', toggleMenu);
@@ -537,7 +542,7 @@ function changeSkillsContent(atualMode) {
     }
 }
 
-const originalProjectContent = document.getElementById('projects').innerHTML;
+const originalProjectContent = document.querySelector('.projects-wrapper').innerHTML;
 
 function changeProjectsContent(atualMode) {
     const btnArt = document.querySelector('.art-btn');
@@ -550,6 +555,12 @@ function changeProjectsContent(atualMode) {
         textProjects.innerHTML = originalProjectContent;
     }else if(atualMode === btnArt) {
         textProjects.innerHTML = `
+        <div class="swiper mySwiper section-hidden swiper-initialized swiper-horizontal swiper-backface-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-project">
+                </div>
+            </div>
+        </div>
         <div class="projects-title">
             <h2>ARTES</h2>
         </div>
@@ -1417,9 +1428,251 @@ function changeProjectsContent(atualMode) {
         </div>`;
     }else if(atualMode === btn3d) {
         textProjects.innerHTML = `
+
+        <div class="swiper mySwiper section-hidden">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide card-project">
+                </div>
+            </div>
+        </div>
         <div class="projects-title">
             <h2>PROJETOS</h2>
         </div>
+            <div class="arts-projects">
+                
+                <div class="sliders first">
+                    <div class="art-title section-hidden">
+                        <h2>
+                            Pixel Arts
+                        </h2>
+                    </div>
+                    <div class="projects-grid">   
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/RybZJD" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Rober Face - PES 21</h3>
+                                        <p>Minha face pessoal para o meu Rumo ao Estrelado no PES. Para fazer faces para o jogo, usamos uma que já existe de base e modelamos por cima.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Julho de 2024</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/680/467/small/rober122-rober-face.jpg?1720062127" alt="rober-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/m8JRRe" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Tom Holland Face - PES 21</h3>
+                                        <p>Face do ator Tom Holland. Fiz no hype para assistir Spider-Man: No Way Home no cinema.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Nov de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/748/400/small/rober122-tom-holand-face.jpg?1720238952" alt="tom-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/BXgqm4" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Gustavo Florentin Face - PES 21</h3>
+                                        <p>Ex técnico do Sport em 2021.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/767/881/small/rober122-florentin-face.jpg?1720295284" alt="florentin-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/DvaX5O" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Kratos Face - PES 21</h3>
+                                        <p>Face feita a pedido de um cliente do Kratos. Foi um desafio bem legal.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/768/073/small/rober122-kratos-face.jpg?1720295815" alt="kratos-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/YBm9BK" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Emiliano Rigoni Face - PES 21</h3>
+                                        <p>Face feita a pedido do dono de um Patch chamado Super Brazil. As tatuagens tambem foram eu que fiz.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/768/276/small/rober122-rigone-face.jpg?1720296490" alt="rigoni-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/obr5JW" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Leo Barcia Face - PES 21</h3>
+                                        <p>Face feita a pedido do dono de um Patch chamado Super Brazil.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Set de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/768/569/small/rober122-barcia-face.jpg?1720297490" alt="barcia-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/9EG98v" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Ciro Face - PES 21</h3>
+                                        <p>Fiz essa face mais como um hobby para passar o tempo.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Julho de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/768/730/small/rober122-ciro-face.jpg?1720298108" alt="ciro-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/PX8wKL" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Durval Face - PES 21</h3>
+                                        <p>Face do seu Durval, ídolo do Sport.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/772/550/small/rober122-durval-face.jpg?1720314530" alt="durval-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/obr5GW" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Vanderson Face - PES 21</h3>
+                                        <p>Face de um jogador do Grêmio a pedido do Patch.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Maio de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/772/681/small/rober122-gremio-face.jpg?1720315632" alt="vanderson-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/04NwKy" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Gustavo Face - PES 21</h3>
+                                        <p>Face de um jogador da base do Sport. Fazer essa foi realmente difícil, já que ele estava no começo de carreira e não tinha muitas fotos.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Julho de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/773/275/small/rober122-gustavo-face.jpg?1720318335" alt="gustavo-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/KeXb8o" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Mikael Face - PES 21</h3>
+                                        <p>Face também de um jogador da base do Sport.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Abril de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/773/450/small/rober122-mikael-face.jpg?1720319330" alt="mikael-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/AlVxeq" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Palmberg Face - PES 21</h3>
+                                        <p>Face a pedido do Patch Super Brazil.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Set de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/773/561/small/rober122-palmberg-face.jpg?1720319712" alt="palmberg-face">
+                            </a>
+                        </div>
+
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/8b2YXG" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Palmberg Face - PES 21</h3>
+                                        <p>Face a pedido do Patch Super Brazil.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Set de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/773/656/small/rober122-presida-gremio-face.jpg?1720320014" alt="palmberg-face">
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
         `;
     }
 }
