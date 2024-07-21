@@ -43,7 +43,7 @@ function createSwiper(container, pagination, nextButton, prevButton) {
     });
 }
 
-let swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
+
 
 function handleWidth() {
     let getWidth = window.innerWidth || document.documentElement.clientWidth;
@@ -60,25 +60,48 @@ function handleWidth() {
     return slideShow;
 }
 
-// Função para recriar o Swiper
-function updateSwiper() {
-    if (swiper) {
-        swiper.destroy(true, true);
-    }
-    swiper = createSwiper(".mySwiper", ".swiper-pagination", ".swiper-button-next", ".swiper-button-prev");
+// Array para armazenar as instâncias dos Swipers
+let swipers = [];
+
+// Inicializa todos os Swipers
+function initSwipers() {
+    // Encontre todas as instâncias do Swiper na página
+    document.querySelectorAll('.mySwiper').forEach((container, index) => {
+        const pagination = container.querySelector('.swiper-pagination');
+        const nextButton = container.querySelector('.swiper-button-next');
+        const prevButton = container.querySelector('.swiper-button-prev');
+        
+        // Cria uma nova instância do Swiper e armazena no array
+        swipers[index] = createSwiper(container, pagination, nextButton, prevButton);
+    });
 }
+
+// Função para recriar os Swipers
+function updateSwipers() {
+    // Destroi todas as instâncias do Swiper
+    swipers.forEach(swiper => {
+        if (swiper && typeof swiper.destroy === "function") {
+            swiper.destroy(true, true);
+        }
+    });
+    
+    // Limpa o array de Swipers
+    swipers = [];
+    
+    // Inicializa novamente os Swipers
+    initSwipers();
+}
+
+// Inicializa os Swipers na primeira carga da página
+initSwipers();
 
 // Adiciona um listener para o evento resize
 window.addEventListener('resize', function() {
-    updateSwiper();
+    updateSwipers();
 });
-window.addEventListener('scroll', function() {
-    updateSwiper();
-});
-
 // Executa a função uma vez ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
-    updateSwiper();
+    updateSwipers();
 });
 
 let header = document.getElementById('header')
@@ -231,7 +254,7 @@ const radio1 = document.getElementById('radio1');
 // Marcar o radio1 como checked quando a página carregar
 radio1.checked = true;
 // Altura da DIV
-document.querySelector('#projects').style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; 
+
 document.addEventListener('DOMContentLoaded', function () {
     function isInView(element) {
         const rect = element.getBoundingClientRect();
@@ -244,20 +267,21 @@ document.addEventListener('DOMContentLoaded', function () {
         radios.forEach(radio => {
             radio.addEventListener('change', function () {
             const parentDiv = document.querySelector('#projects');
+            const artTitle = document.querySelector('.art-title');
             if (radio.id === 'radio1') {
                 parentDiv.style.maxHeight = (document.querySelector('.first .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
     
                 if(!isInView(document.querySelector('.first .projects-grid')))
-                document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                artTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else if (radio.id === 'radio2') {
                 parentDiv.style.maxHeight = (document.querySelector('.second .projects-grid').offsetHeight + 92 + 177 + 32) + 'px';// Altere o estilo conforme necessário
                 
                 if(!isInView(document.querySelector('.second .projects-grid')))
-                document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                artTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
             } else if (radio.id === 'radio3') {
                 parentDiv.style.maxHeight = (document.querySelector('.third .projects-grid').offsetHeight + 92 + 177 + 32) + 'px'; // Altere o estilo conforme necessário
                 if(!isInView(document.querySelector('.third .projects-grid')))
-                    document.querySelector('.art-title').scrollIntoView({ behavior: 'smooth', block: 'start' });
+                artTitle.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
             });
         });
@@ -296,7 +320,7 @@ let currentMode = btnProgrammer;
 
 function toggleMode(event) {
     const aboutTechs = document.querySelector('.skills-content');
-
+    
     const buttonClicked = event.target;
 
     if(buttonClicked === currentMode) {
@@ -553,6 +577,7 @@ function changeProjectsContent(atualMode) {
 
     if(atualMode === btnProgrammer) {
         textProjects.innerHTML = originalProjectContent;
+        updateSwipers();
     }else if(atualMode === btnArt) {
         textProjects.innerHTML = `
         <div class="swiper mySwiper section-hidden swiper-initialized swiper-horizontal swiper-backface-hidden">
@@ -574,7 +599,7 @@ function changeProjectsContent(atualMode) {
                     </h2>
                 </div>
                 <div class="projects-grid">               
-                    <div class="l-img section-hidden">
+                    <div class="l-img section-hidden" target="_blank">
                         <a href="https://www.artstation.com/artwork/5vz05O">
                             <div class="infos-arts">
                                 <div class="title">
@@ -585,7 +610,6 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Março de 2024</p>
                                     <p><b>Dimensões: </b>290x290 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                             <img src="./img/projects/projects-arts/SPORTRECIFE1.gif" alt="sport-recife">
@@ -593,7 +617,7 @@ function changeProjectsContent(atualMode) {
                     </div>
 
                     <div class="h-img section-hidden">
-                        <a href="https://www.artstation.com/artwork/aowyY2">
+                        <a href="https://www.artstation.com/artwork/aowyY2" target="_blank">
                             <img src="./img/projects/projects-arts/spider-man.gif" alt="spiderman">
                         
                             <div class="infos-arts">
@@ -605,14 +629,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Março de 2024</p>
                                     <p><b>Dimensões: </b>240x135 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     
                     <div class="l-img section-hidden">
-                        <a href="https://www.artstation.com/artwork/BXAYZ9">
+                        <a href="https://www.artstation.com/artwork/BXAYZ9" target="_blank">
                             <img src="./img/projects/projects-arts/FOXY.png" alt="foxy-fnaf">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -623,14 +646,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Abril de 2024</p>
                                     <p><b>Dimensões: </b>128x128 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>                    
                     </div>  
     
                     <div class="h-img section-hidden">
-                        <a href="https://www.artstation.com/artwork/ob4K3m">
+                        <a href="https://www.artstation.com/artwork/ob4K3m" target="_blank">
                             <img src="./img/projects/projects-arts/youlooklonely.png" alt="you-look-lonely">
                             <div class="infos-arts">
                                 <div class="title">
@@ -641,14 +663,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Outubro de 2023</p>
                                     <p><b>Dimensões: </b>209x116 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>     
                     
                     <div class="section-hidden">
-                        <a href="https://www.artstation.com/artwork/ob4Kam">
+                        <a href="https://www.artstation.com/artwork/ob4Kam" target="_blank">
                             <img src="./img/projects/projects-arts/spiderman.gif" alt="spiderman-perfil">
                             <div class="infos-arts">
                                 <div class="title">
@@ -659,14 +680,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Fevereiro de 2024</p>
                                     <p><b>Dimensões: </b>61x61 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     
                     <div class="section-hidden">
-                        <a href="https://www.artstation.com/artwork/1xAO5o">
+                        <a href="https://www.artstation.com/artwork/1xAO5o" target="_blank">
                             <img src="./img/projects/projects-arts/darkfantasy.png" alt="dark-fantasy">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -677,13 +697,12 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Janeiro de 2024</p>
                                     <p><b>Dimensões: </b>180x180 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="section-hidden">
-                        <a href="https://www.artstation.com/artwork/Kendqx">
+                        <a href="https://www.artstation.com/artwork/Kendqx" target="_blank">
                             <img src="./img/projects/projects-arts/LifeIsStrange.png" alt="life-is-strange-butterfly">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -694,14 +713,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Maio de 2024</p>
                                     <p><b>Dimensões: </b>137x158 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
 
                     <div class="section-hidden">
-                        <a href="https://www.artstation.com/artwork/w01K16">
+                        <a href="https://www.artstation.com/artwork/w01K16" target="_blank">
                             <img src="./img/projects/projects-arts/games.gif" alt="games-art">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -712,14 +730,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Dezembro de 2023</p>
                                     <p><b>Dimensões: </b>215x193 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     
                     <div class="v-img section-hidden">
-                        <a href="">
+                        <a href="https://www.artstation.com/artwork/Ge4QQ4" target="_blank">
                             <img src="./img/projects/projects-arts/sea.png" alt="sea">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -730,13 +747,12 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Fevereiro de 2024</p>
                                     <p><b>Dimensões: </b>150x219 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="h-img section-hidden">
-                        <a href="https://www.artstation.com/artwork/g0kKrZ">
+                        <a href="https://www.artstation.com/artwork/g0kKrZ" target="_blank">
                             <img src="./img/projects/projects-arts/drive1.png" alt="i-drive">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -747,14 +763,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Janeiro de 2024</p>
                                     <p><b>Dimensões: </b>250x173 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     
                     <div class="h-img section-hidden">
-                        <a href="">
+                        <a href="https://www.artstation.com/artwork/lDJJqa" target="_blank">
                             <img src="./img/projects/projects-arts/Dido1.gif" alt="dido">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -765,13 +780,12 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Março de 2024</p>
                                     <p><b>Dimensões: </b>227x183 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
                     <div class="v-img section-hidden">
-                        <a href="">
+                        <a href="https://www.artstation.com/artwork/KeXGGG" target="_blank">
                             <img src="./img/projects/projects-arts/natal.gif" alt="natal">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -782,14 +796,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Dezembro de 2023</p>
                                     <p><b>Dimensões: </b>165x305 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
     
                     <div class="h-img section-hidden">
-                        <a href="">
+                        <a href="https://www.artstation.com/artwork/ao223z" target="_blank">
                             <img src="./img/projects/projects-arts/Stan.gif" alt="stan">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -800,14 +813,13 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Março de 2024</p>
                                     <p><b>Dimensões: </b>227x183 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
                     </div>
     
                     <div class="h-img section-hidden">
-                        <a href="">
+                        <a href="https://www.artstation.com/artwork/EvlWo8" target="_blank">
                             <img src="./img/projects/projects-arts/LaLaLand.png" alt="lalaland">
                             <div class="infos-arts">                        
                                 <div class="title">
@@ -818,7 +830,6 @@ function changeProjectsContent(atualMode) {
                                     <p><b>Data: </b>Dezembro de 2023</p>
                                     <p><b>Dimensões: </b>165x305 px</p>
                                     <p><b>Ferramentas: </b>Aseprite</p>
-                                    <p><b>Categoria </b>Pixel Art</p>
                                 </div>
                             </div>
                         </a>
@@ -1656,7 +1667,7 @@ function changeProjectsContent(atualMode) {
                             <a href="https://www.artstation.com/artwork/8b2YXG" target="_blank">
                                 <div class="infos-arts">
                                     <div class="title">
-                                        <h3>Palmberg Face - PES 21</h3>
+                                        <h3>Presidente Grêmio - PES 21</h3>
                                         <p>Face a pedido do Patch Super Brazil.</p>
                                     </div>
                                     <div class="infos">
@@ -1665,7 +1676,75 @@ function changeProjectsContent(atualMode) {
                                         <p><b>Categoria </b>Modelagem, Texturização</p>
                                     </div>
                                 </div>
-                                <img src="https://cdna.artstation.com/p/assets/images/images/077/773/656/small/rober122-presida-gremio-face.jpg?1720320014" alt="palmberg-face">
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/773/656/small/rober122-presida-gremio-face.jpg?1720320014" alt="gremio-face">
+                            </a>
+                        </div>
+                        
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/ZaNvr1" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Roberto - PES 21</h3>
+                                        <p>Face do meu pai.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdna.artstation.com/p/assets/images/images/077/774/386/small/rober122-roberto-face.jpg?1720324303" alt="papai-face">
+                            </a>
+                        </div>
+                        
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/VJ56En" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Magrão - PES 21</h3>
+                                        <p>Face do maior ídolo do Sport, Magrão.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/774/443/small/rober122-sem-titulo.jpg?1720324882" alt="magrao-face">
+                            </a>
+                        </div>
+                        
+                        <div class="l-img section-hidden">
+                            <a href="https://www.artstation.com/artwork/PX8331" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Umberto Louzer - PES 21</h3>
+                                        <p>Face de um ex técnico do Sport.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Junho de 2021</p>
+                                        <p><b>Ferramentas: </b>Blender, Photoshop</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização</p>
+                                    </div>
+                                </div>
+                                <img src="https://cdnb.artstation.com/p/assets/images/images/077/792/569/small/rober122-umberto-louzer-face.jpg?1720380372" alt="magrao-face">
+                            </a>
+                        </div>
+                        
+                        <div class="footer section-hidden">
+                            <a href="https://www.artstation.com/artwork/041q0E" target="_blank">
+                                <div class="infos-arts">
+                                    <div class="title">
+                                        <h3>Quarto</h3>
+                                        <p>Essa é um dos únicos projetos de render que tenho salvo, infelizmente. Foi um quarto que fiz a pedido de um amigo.</p>
+                                    </div>
+                                    <div class="infos">
+                                        <p><b>Data: </b>Agosto de 2022</p>
+                                        <p><b>Ferramentas: </b>Cinema 4D</p>
+                                        <p><b>Categoria </b>Modelagem, Texturização, Iluminação</p>
+                                    </div>
+                                </div>
+                                <img src="./img/projects/projects-arts/3d/Quarto001.jpg" alt="quarto-face">
                             </a>
                         </div>
 

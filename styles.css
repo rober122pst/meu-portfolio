@@ -1057,36 +1057,71 @@ body {
     cursor: pointer;
   }
 
-  .swiper-slide:nth-child(1) div a div {
+  .rap-boy a div {
     background-image: url(./img/projects/project-games/rapboy.PNG);
   }
-  .swiper-slide:nth-child(2) div a div {
+  .survival a div {
     background-image: url(./img/projects/project-games/horror.PNG);
   }
-  .swiper-slide:nth-child(3) div a div {
+  .minecraft a div {
     background-image: url(./img/projects/project-games/minecraft.PNG);
   }
-  .swiper-slide:nth-child(4) div a div {
+  .pac-man a div {
     background-image: url(./img/projects/project-games/pacman.PNG);
   }
-  .swiper-slide:nth-child(5) div a div {
+  .shooter a div {
     background-image: url(./img/projects/project-games/team_fortress.PNG);
+  }
+  .clock-tower a div {
+    background-image: url(./img/projects/project-games/clocktower.png);
+  }
+  .fnaf a div {
+    background-image: url(./img/projects/project-games/fnaf.png);
+  }
+  .wild-west a div {
+    background-image: url(./img/projects/project-games/faroeste.png);
+  }
+  
+  .portifolio a div {
+    background-image: url(./img/projects/project-games/website.PNG);
+  }
+  .conecta a div {
+    background-image: url(./img/projects/project-games/conectaPET.PNG);
+  }
+  .machine a div {
+    background-image: url(./img/projects/project-games/machinelearning.PNG);
+  }
+  .pandas a div {
+    background-image: url(./img/projects/project-games/pandas.PNG);
   }
 
   .image-project div:hover {
     transform: scale(1.1);
   }
 
-  .swiper-slide:nth-child(3) div a div:hover {
+  .minecraft a div:hover {
     background-image: url(./img/projects/project-games/unknown_2024.06.13-22.31.gif);
   }
-  .swiper-slide:nth-child(4) div a div:hover {
+  .pac-man a div:hover {
     background-image: url(./img/projects/project-games/pacmangif.gif);
   }
-  .swiper-slide:nth-child(5) div a div:hover {
+  .shooter a div:hover {
     background-image: url(./img/projects/project-games/team_fortress.gif);
   }
+  .clock-tower a div:hover {
+    background-image: url(./img/projects/project-games/clocktower.gif);
+    background-position: left;
+  }
+  .fnaf a div:hover {
+    background-image: url(./img/projects/project-games/fnaf.gif);
+  }
+  .wild-west a div:hover {
+    background-image: url(./img/projects/project-games/faroeste.gif);
+  }
 
+  .swiper:not(:last-child) {
+      margin-bottom: 10rem;
+  }
   
   .card-project span {
     color: var(--color-black);

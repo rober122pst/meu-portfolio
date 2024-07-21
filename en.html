@@ -6,16 +6,148 @@
     <title>Rober's Portfolio</title>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-brands/css/uicons-brands.css'>    
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"></link>
     <link rel="stylesheet" href="mode.css">
     <link rel="stylesheet" href="styles.css">
+
+    <link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+
+    <noscript>
+
+        <style>
+
+            .notificacao {
+                
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                padding: 2rem;
+
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                
+
+                background-color: #0c0c0c;
+
+                flex-direction: column;
+
+                z-index: 5001;
+            }
+
+            .notificacao p {
+                text-align: center;
+
+                color: #fff;
+                font-size: calc(.8rem + 1.2vw);
+            }
+
+            .notificacao > img {
+                max-width: 950px;
+                width: calc(20rem + 40vw);
+                margin-bottom: -2rem;
+            }
+
+            .notificacao .imagens {
+                width: 100%;
+                margin-top: 2rem;
+                display: flex;
+                justify-content: center;
+                
+                position: relative;
+
+                flex-direction: row;
+            }
+
+            .notificacao .imagens::after {
+                content: "🠖";
+                color: #fff;
+                font-size: 5rem;
+
+                position: absolute;
+                top: 35%;
+            }
+
+            .notificacao .imagens img {
+                margin: 0 3rem;
+                object-fit: cover;
+                width: calc(10rem + 25vw);
+                max-width: 400px;
+                height: auto;
+                border: #fff 2px solid;
+            }
+
+            .imagens-mobile {
+                display: none;
+            }
+
+            @media (max-width: 530px) {
+                .notificacao .imagens {
+                    display: none;
+                }
+
+                .notificacao .imagens-mobile {
+                    width: 100%;
+                    margin-top: 2rem;
+                    display: flex;
+                    justify-content: center;
+                    
+                    position: relative;
+
+                    flex-direction: row;
+                }
+
+                .notificacao .imagens-mobile img {
+                    margin: 0 .5rem;
+                    object-fit: cover;
+                    width: calc(2rem + 22vw);
+                    max-width: 400px;
+                    height: auto;
+                    border: #fff 2px solid;
+                }
+            }
+        </style>
+    </noscript>
+
+    <style>
+        .no-js {
+            display: none;
+        }
+        
+    </style>
+        
 </head>
-<body>  
+<body>
+
+    <div class="notificacao">
+        <img src="./img/roberJS.png" alt="lara">
+        <div>
+            <p>O seu <b>Java Script</b> está desativado! Ative para o site funcionar de maneira correta. <br> Após isso, reinicie a página.</p>
+        </div>
+        <div class="imagens">
+            <img src="./img/tutorial1.png" alt="tutorialjs">
+            <img src="./img/tutorial2.png" alt="tutorialjs">
+        </div>
+        <div class="imagens-mobile">
+            <img src="./img/mobile_tutorial1.png" alt="tutorialjs">
+            <img src="./img/mobile_tutorial2.png" alt="tutorialjs">
+            <img src="./img/mobile_tutorial3.png" alt="tutorialjs">
+        </div>
+    </div>
+
+    
+    <div class="loader"><img src="./img/loading-screen/Lara_loading_.gif" alt="lara">
+    <h1>A Lara está à procura dos codigos, </h1>
+    <h1>aguarde um momento.</h1>
+    </div>
+
+    <div class="no-js content">
     <!-- Header -->
-    <section id="header">
-        <a class="header-title" href="./index.html">
+    <section id="header" style="background: transparent; box-shadow: transparent 0px 0px 0px 0px;">
+        <a class="header-title" href="https://rober122pst.github.io/meu-portfolio/">
             <h1>
                 Rober122
             </h1>
@@ -23,7 +155,7 @@
         
         <div class="navbar-geral">
             <div class="language">
-                <a href="./index.html"><img src="./svg/Brazilian_Flag_-_round.svg" alt="usa-lgn"></a>
+                <a href="./en"><img src="./svg/Brazilian_Flag_-_round.svg" alt="usa-lgn"></a>
             </div>
             <div class="burguer">
                 <div></div>
@@ -58,7 +190,7 @@
         <div class="person-content">
             <div class="person-name">
                 <h1>Hi! <span></span></h1>
-                <h1>My name is <span></span></h1>
+                <h1>My Name Is <span></span></h1>
                 <h1 class="name animacao-rober"><span></span></h1>
             </div>
             
@@ -91,16 +223,12 @@
             <div class="wrapper-profile-photo">
                 <div class="profile-photo" alt="foto-rober"></div>
             </div>
-            <div class="mode">
-                <i class="programmer-btn fa-solid fa-laptop-code" alt="programmer-mode"></i>
-                <i class="art-btn fa-solid fa-paintbrush" src="./svg/desenhista.svg" alt="design-mode"></i>
-                <i class="cube-btn fa-solid fa-cube" src="./svg/cube.svg" alt="3D-design-mode"></i>
-            </div>
         </div>
     </section>
     <!-- End Person -->
     <!-- About -->
     <section id="about">
+        
         <div class="background-about">
             <div class="img-wrapper">
             </div>
@@ -109,113 +237,325 @@
         <div class="box-about">
             <div class="section-subtitle">
                 <h2 class="section-hidden">
-                    <p>💻</p>
-                    <p><span>Desenvolvedor</span> de Jogos</p>
+                    <p><span>Game</span> Developer</p>
                 </h2>
             </div>
 
             <h3 class="text-about section-hidden">
-                Sou um Desenvolvedor de Jogos com esperiências em
-                <p>Java, C#, GML, Unity e Game Maker</p>
+                I am a Game Developer with experience in Java
+                <p>Java, C#, GML, Unity and Game Maker</p>
             </h3>
 
             <h4 class="section-hidden">
-                Hi, I’m Rober, an 18-year-old who’s crazy about programming and games. I started creating games on PowerPoint and Scratch when I was just 6 years old, and since then, my curiosity has only grown. I love math, and it helps me a lot in programming. My dream is to become a professional game developer, but I also enjoy exploring other areas of programming. In short, I’m a guy who’s passionate about technology, always learning, and excited to see where this journey will take me.
+                Hi, I'm Rober, I'm 18 years old, and I'm crazy about programming and games. I started creating games in PowerPoint and Scratch when I was 6 years old, and since then my curiosity has only grown. I love mathematics, and it helps me a lot in programming. My dream is to become a professional game developer, but I also enjoy exploring other areas of programming. In short, I'm passionate about technology, always learning, and excited to see where this journey will take me.
             </h4>
 
             <h4 class="section-hidden">
-                Abaixo está o <p>currículo</p> para download.
+                Below is the <p>resume</p> for download.
             </h4>
-
+            
             <div class="button-cta section-hidden">
-                <a>Currículo</a>
+                <a>CV</a>
             </div>
         </div>
     </section>
     <!-- End About -->
     <!-- Projects -->
     <section id="projects">
-        <div class="projects-title">
-            <h2>PROJETOS</h2>
+        
+        <!-- Radio Buttons -->
+        <input type="radio" name="radio-btn" id="radio1">
+        <input type="radio" name="radio-btn" id="radio2">
+        <input type="radio" name="radio-btn" id="radio3">
+        <!-- Radio Buttons End -->
+
+        <div class="manual-navigation">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
         </div>
 
-        <div class="swiper mySwiper section-hidden">
-            <div class="swiper-wrapper">
-                <!-- content-project -->
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projects/project-games/rapboy.PNG" alt="img-projeto">
-                        </a>
+        <div class="projects-wrapper">
+            <div class="projects-title">
+                <h2>PROJECTS</h2>
+            </div>
+    
+            <div class="swiper mySwiper section-hidden">
+                <div class="swiper-wrapper">
+                    <!-- content-project -->
+                    <div class="swiper-slide card-project">
+                        <div class="image-project rap-boy">
+                            <a href="https://github.com/rober122pst/rapboy" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Rap Boy - Game</span>
+                        <p>I'm developing this game for practice. It's a beat 'em up featuring Eminem's alter ego, Slim Shady, dressed as Rap Boy. This project is using <b>GML.</b></p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/rapboy" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+    
                     </div>
-                    <span>Rap Boy Game</span>
-                    <p>Estou desenvolvendo esse jogo para praticar. É um Beat Up do alter ego do Eminem, Slim Shady, que está vestido de Rap Boy. Neste projeto está sendo usado <b>GML</b></p>
-
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
+                    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project survival">
+                            <a>
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Survival Horror - HD2D</span>
+                        <p>My main project currently. A HD2D survival horror set in the 1980s. I’m using C# and developing it in Unity. All the art and modeling are done by me.</p>
+    
+                        <div class="cta-project">
+                            <!-- <a href="https://github.com/rober122pst/minecraft-clone" target="_blank">
+                                Código
+                                <i class="fa-brands fa-github"></i>
+                            </a> -->
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
                     </div>
+    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project pac-man">
+                            <a href="https://github.com/rober122pst/pacman-java">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Pac Man</span>
+                        <p>A Pac-Man game made in JAVA. This game was developed with a custom-built engine.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/pacman-java">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+    
+                    </div>
+                    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project wild-west">
+                            <a href="https://github.com/rober122pst/duel-wild-west" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Wild West Duel</span>
+                        <p>A Western-themed game I made for practice. I plan to continue working on this game, polish it, and add multiplayer. I’m trying to make the gameplay more challenging by adding a bit more “realism” so that you really feel like you’re in a duel.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/duel-wild-west" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="public/document/Duelo Faroeste.zip" download="Wild West Duel" aria-label="Baixar jogo faroeste">
+                                Download
+                                <i class="fa-solid fa-download"></i>
+                            </a>
+                        </div>
+                    </div>
+    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project minecraft">
+                            <a href="https://github.com/rober122pst/minecraft-clone" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Minecraft - Platformer</span>
 
+                        <p>A kind of 2D platformer Minecraft. A prototype made in JAVA. Here I explore techniques such as random map generation, biomes, and day-night cycle. It features an inventory system, block construction and destruction systems, and more.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/minecraft-clone" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+                    </div>
+    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project shooter">
+                            <a href="https://github.com/rober122pst/shooter" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Platformer Shooter</span>
+                        <p>A platformer shooter developed in Game Maker. I explored systems like teams, weapon drops, and more.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/shooter" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+                    </div>
+    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project clock-tower">
+                            <a href="https://github.com/rober122pst/clock-tower-clone" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Clock Tower Clone</span>
+                        <p>A Clock Tower clone I made for practice. I didn't get very far, but I’m happy with what I accomplished. I tried to mimic the game as closely as possible, both in gameplay and in the HUD.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/clock-tower-clone" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+                    </div>
+    
+                    <div class="swiper-slide card-project">
+                        <div class="image-project fnaf">
+                            <a href="https://github.com/rober122pst/fnaf-nao-negocie-com-o-diabo" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>FNAF - Don't Deal with the Devil</span>
+                        <p>A platformer game fully inspired by Cuphead but featuring FNAF characters.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/fnaf-nao-negocie-com-o-diabo" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <!-- <a href="/">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a> -->
+                        </div>
+                    </div>
+                    
                 </div>
-                
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projeto.jpeg" alt="img-projeto">
-                        </a>
-                    </div>
-                    <span>Primeiro projeto</span>
-                    <p>Este é um projeto teste para o site.</p>
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-pagination"></div>
+            </div>
 
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
+            <div class="swiper mySwiper section-hidden">
+                <div class="swiper-wrapper">
+                    <!-- content-project -->
+                    <div class="swiper-slide card-project">
+                        <div class="image-project portifolio">
+                            <a href="https://github.com/rober122pst/meu-portfolio" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Web Portfolio</span>
+                        <p>Não sei se deveria botar ele aqui, mas esse é o meu primeiro site, então quis fazer isso. Não sabia praticamente nada de HTML, CSS e JS, aprendi tudo fazendo isso. Isso prova que consigo aprender as coisas rapido.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/meu-portfolio" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                            <a href="./">
+                                Site
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
                     </div>
 
+                    <div class="swiper-slide card-project">
+                        <div class="image-project conecta">
+                            <a href="https://github.com/rober122pst/meu-portfolio" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Exercícios de Python</span>
+                        <p>Exercícios das aulas do evento conectaPET feito na UFPE.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/meu-portfolio" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide card-project">
+                        <div class="image-project machine">
+                            <a href="https://github.com/rober122pst/machine-learning" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Gráfico com pandas</span>
+                        <p>Aqui aprendo a montar gráficos e acessar planilhas usando a biblioteca pandas no python.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/machine-learning" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="swiper-slide card-project">
+                        <div class="image-project pandas">
+                            <a href="https://github.com/rober122pst/apredendo-pandas" target="_blank">
+                                <div></div>
+                            </a>
+                        </div>
+                        <span>Análise de Dados</span>
+                        <p>Neste projeto estudei análise de dados usando biblioteca como pandas e seaborn. Foi a primeira vez que usei o google collab, achei mágico o jeito em que os gráficos aparecem.</p>
+    
+                        <div class="cta-project">
+                            <a href="https://github.com/rober122pst/apredendo-pandas" target="_blank">
+                                Code
+                                <i class="fa-brands fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    </div>
+
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
                 </div>
-
-                <div class="swiper-slide card-project">
-                    <div class="image-project">
-                        <a href="/">
-                            <img src="./img/projeto.jpeg" alt="img-projeto">
-                        </a>
+    
+            <div class="arts-projects">
+                <div class="sliders first">
+                    <div class="art-title section-hidden">
                     </div>
-                    <span>Primeiro projeto</span>
-                    <p>Este é um projeto teste para o site.</p>
-
-                    <div class="cta-project">
-                        <a href="/">
-                            Codigo
-                            <i class="fa-brands fa-github"></i>
-                        </a>
-                        <a href="/">
-                            Site
-                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                        </a>
-                    </div>
-
+                    <div class="projects-grid"></div>
                 </div>
             </div>
-            <div class="swiper-button-next"></div>
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-pagination"></div>
         </div>
+        
     </section>
     <!-- End Projects -->
     <!-- Skills -->
     <section id="skills">
+        
         <div class="skills-title">
             <h2>SKILLS</h2>
         </div>
@@ -364,7 +704,6 @@
             </div>
         </div>
     </section>
-   
     <!-- End Skills -->
     <!-- Contact -->
     <section id="contacts">
@@ -402,6 +741,12 @@
         </div>
     </section>
     <!-- End Footer -->
+
+    <div class="mode">
+        <i class="programmer-btn fa-solid fa-laptop-code" alt="programmer-mode"></i>
+        <i class="art-btn fa-solid fa-paintbrush" src="./svg/desenhista.svg" alt="design-mode"></i>
+        <i class="cube-btn fa-solid fa-cube" src="./svg/cube.svg" alt="3D-design-mode"></i>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="scripts.js"></script>
