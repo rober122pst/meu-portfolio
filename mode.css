@@ -108,7 +108,7 @@
 
 .manual-navigation {
     position: sticky;
-    top: 90%;
+    top: calc(80% + 5vw);
     left: 0;
     display: flex;
     justify-content: center;
@@ -135,13 +135,13 @@
     background-color: var(--color-main);
 }
 
-#radio1:checked ~ .projects-wrapper .arts-projects .first{
+.art-mode #radio1:checked ~ .projects-wrapper .arts-projects .first{
     margin-left: 0%;
 }
-#radio2:checked ~ .projects-wrapper .arts-projects .first{
+.art-mode #radio2:checked ~ .projects-wrapper .arts-projects .first{
     margin-left: -25%;
 }
-#radio3:checked ~ .projects-wrapper .arts-projects .first{
+.art-mode #radio3:checked ~ .projects-wrapper .arts-projects .first{
     margin-left: -50%;
 }
 
