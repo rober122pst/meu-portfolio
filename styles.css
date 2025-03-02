@@ -1085,11 +1085,11 @@ body {
   .portifolio a div {
     background-image: url(./img/projects/project-games/website.PNG);
   }
-  .conecta a div {
-    background-image: url(./img/projects/project-games/conectaPET.PNG);
+  .sportbot a div {
+    background-image: url(./img/projects/project-games/botSport.PNG);
   }
-  .machine a div {
-    background-image: url(./img/projects/project-games/machinelearning.PNG);
+  .game-stats a div {
+    background-image: url(./img/projects/project-games/gameBot.PNG);
   }
   .pandas a div {
     background-image: url(./img/projects/project-games/pandas.PNG);

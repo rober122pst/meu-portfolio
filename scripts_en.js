@@ -48,7 +48,7 @@ Following in my father's footsteps, an incredible illustrator and t-shirt design
     Below is the <p>resume</p> for download.
 </h4>
 <div class="button-cta section-hidden">
-    <a>Resume</a>
+    <a href="public/document/Currículo_rober.pdf" target="_blank" download="resume_rober.pdf">Resume</a>
 </div>`;
 window.about3d = `<div class="section-subtitle">
 <h2 class="section-hidden">
@@ -60,13 +60,13 @@ window.about3d = `<div class="section-subtitle">
     <p>Modeling, Interiors, Rendering, C4D, and Blender</p>
 </h3>
 <h4 class="section-hidden">
-My journey into 3D modeling began in 2014 when I was just 8 years old, using Blender 2.69. Over time, I ventured into Cinema 4D, where I enjoyed creating Minecraft animations and interior renderings. Unfortunately, I lost most of that work when my hard drive crashed. :( Since 2020, I have focused on face modeling for PES 21 using Blender. I have sold several of these models and even worked on a patch for a while. Currently, I am honing my skills in low poly pixel art, a technique I am applying to the development of my new game. Each project is a new opportunity to learn and grow in this fascinating field.
+My journey into 3D modeling began in 2014 when I was just 8 years old, using Blender 2.69. Over time, I ventured into Cinema 4D, where I enjoyed creating Minecraft animations and interior renderings. Unfortunately, I lost most of that work when my hard drive crashed. :( Since 2021, I have focused on face modeling for PES 21 using Blender. I have sold several of these models and even worked on a patch for a while. Currently, I am honing my skills in low poly pixel art, a technique I am applying to the development of my new game. Each project is a new opportunity to learn and grow in this fascinating field.
 </h4>
 <h4 class="section-hidden">
     Below is the <p>resume</p> for download.
 </h4>
 <div class="button-cta section-hidden">
-    <a>Resume</a>
+    <a href="public/document/Currículo_rober.pdf" target="_blank" download="resume_rober.pdf">Resume</a>
 </div>`;
 
 window.techsArt = `<h3>Proficiencies</h3>
@@ -834,6 +834,38 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
     </div>
     
     <div class="h-img section-hidden">
+            <a href="https://www.artstation.com/artwork/6LZ4y5" target="_blank">
+                <div class="infos-arts">
+                    <div class="title">
+                        <h3>Sport Recife 120 years - Home</h3>
+                        <p>This is a kit I made for my career mode. The small details on the red stripes are its old crests, representing the club's origins.</p>
+                    </div>
+                    <div class="infos">
+                        <p><b>Date: </b>August 2024</p>
+                        <p><b>Tools: </b>Photoshop, Pes Master, Blender</p>
+                    </div>
+                </div>
+                <img src="./img/projects/projects-arts/design/sport2024mfthird.png" alt="sport-recife-120-years">
+            </a>
+        </div>    
+
+        <div class="h-img section-hidden">
+            <a href="https://www.artstation.com/artwork/6LZ4y5" target="_blank">
+                <div class="infos-arts">
+                    <div class="title">
+                        <h3>Sport Recife 120 years - Away</h3>
+                        <p>I made this beige jersey just to avoid using white. To keep it from looking too plain, I added a woodcut print of Recife at the bottom. At the time, I didn't have many Photoshop skills, but I believe I could do better today.</p>
+                    </div>
+                    <div class="infos">
+                        <p><b>Date: </b>August 2024</p>
+                        <p><b>Tools: </b>Photoshop, Pes Master, Blender</p>
+                    </div>
+                </div>
+                <img src="./img/projects/projects-arts/design/sport2023.png" alt="sport-recife-120-years-away">
+            </a>
+        </div>
+    
+    <div class="h-img section-hidden">
         <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
             <div class="infos-arts">
                 <div class="title">
@@ -862,38 +894,6 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
                 </div>
             </div>
             <img src="./img/projects/projects-arts/design/sport2024mfaway.png" alt="sport-recife-concept-away">
-        </a>
-    </div>
-    
-    <div class="h-img section-hidden">
-        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
-            <div class="infos-arts">
-                <div class="title">
-                    <h3>Sport Recife Concept Kit - Third</h3>
-                    <p>For this one, I wanted to replicate a black shirt like Germany's.</p>
-                </div>
-                <div class="infos">
-                    <p><b>Date: </b>July 2021</p>
-                    <p><b>Tools: </b>Photoshop, Pes Master, Blender</p>
-                </div>
-            </div>
-            <img src="./img/projects/projects-arts/design/sport2024mfthird.png" alt="sport-recife-concept-third">
-        </a>
-    </div>
-    
-    <div class="h-img section-hidden">
-        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
-            <div class="infos-arts">
-                <div class="title">
-                    <h3>Sport Recife Home - 2023</h3>
-                    <p>Sport's home kit for 2023.</p>
-                </div>
-                <div class="infos">
-                    <p><b>Date: </b>April 2023</p>
-                    <p><b>Tools: </b>Photoshop, Blender</p>
-                </div>
-            </div>
-            <img src="./img/projects/projects-arts/design/sport2023.png" alt="sport-recife-2023">
         </a>
     </div>
     
@@ -946,18 +946,18 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
     </div>
     
     <div class="section-hidden">
-        <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+        <a href="https://www.artstation.com/artwork/AZXbbo" target="_blank">
             <div class="infos-arts">
                 <div class="title">
-                    <h3>School Games</h3>
-                    <p>These shirts were created for a vote to decide which would be the Interclasse shirt at school. There were supposed to be black, blue, red, green, and yellow shirts. I made these shirts when my PC was broken, so it was quite a challenge.</p>
+                    <h3>Social Media</h3>
+                    <p>I post these artworks on the Instagram of a Discord server I'm part of. I keep creating and learning along the way.</p>
                 </div>
                 <div class="infos">
-                    <p><b>Date: </b>August 2021</p>
-                    <p><b>Tools: </b>Photoshop, Pes Master, Blender</p>
+                    <p><b>Date: </b>2025</p>
+                    <p><b>Tools: </b>Photoshop</p>
                 </div>
             </div>
-            <img src="./img/projects/projects-arts/design/sesi.gif" alt="sesi">
+            <img src="./img/projects/projects-arts/design/socialmedia.jpg" alt="sesi">
         </a>
     </div>
     

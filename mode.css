@@ -107,6 +107,13 @@
 }
 
 .manual-navigation {
+    background-color: rgb(25, 25, 25);
+
+    margin: auto;
+    width: 130px;
+    border: 7px solid rgb(25, 25, 25);
+    border-radius: 5px;
+
     position: sticky;
     top: calc(80% + 5vw);
     left: 0;

@@ -339,7 +339,7 @@ Seguindo os passos do meu pai, um incrível desenhista e designer de estampas, m
 </h4>
 
 <div class="button-cta section-hidden">
-    <a>Currículo</a>
+    <a href="public/document/Currículo_rober.pdf" target="_blank" download="Curriculo_Rober.pdf" aria-label="Baixar currículo">Currículo</a>
 </div>`;
 window.about3d = `<div class="section-subtitle">
 <h2 class="section-hidden">
@@ -353,7 +353,7 @@ window.about3d = `<div class="section-subtitle">
 </h3>
 
 <h4 class="section-hidden">
-Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com o Blender 2.69. Com o tempo, me aventurei no Cinema 4D, onde me diverti criando animações de Minecraft e renderizações de interiores. Infelizmente, perdi a maior parte desse trabalho quando meu HD quebrou. :( Desde 2020, tenho me dedicado à modelagem de faces para o PES 21 usando o Blender. Já vendi várias dessas modelagens e até trabalhei para um patch por um tempo. Atualmente, estou aprimorando minhas habilidades em low poly pixel art, uma técnica que estou empregando no desenvolvimento do meu novo jogo. Cada projeto é uma nova oportunidade para aprender e crescer nesta área fascinante.
+Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com o Blender 2.69. Com o tempo, me aventurei no Cinema 4D, onde me diverti criando animações de Minecraft e renderizações de interiores. Infelizmente, perdi a maior parte desse trabalho quando meu HD quebrou. :( Desde 2021, tenho me dedicado à modelagem de faces para o PES 21 usando o Blender. Já vendi várias dessas modelagens e até trabalhei para um patch por um tempo. Atualmente, estou aprimorando minhas habilidades em low poly pixel art, uma técnica que estou empregando no desenvolvimento do meu novo jogo. Cada projeto é uma nova oportunidade para aprender e crescer nesta área fascinante.
 </h4>
 
 <h4 class="section-hidden">
@@ -361,7 +361,7 @@ Minha jornada na modelagem 3D começou em 2014, quando tinha apenas 8 anos, com 
 </h4>
 
 <div class="button-cta section-hidden">
-    <a>Currículo</a>
+    <a href="public/document/Currículo_rober.pdf" target="_blank" download="Curriculo_Rober.pdf" aria-label="Baixar currículo">Currículo</a>
 </div>`;
 
 function toggleMode(event) {    
@@ -1274,6 +1274,38 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
         </div>
                     
         <div class="h-img section-hidden">
+            <a href="https://www.artstation.com/artwork/6LZ4y5" target="_blank">
+                <div class="infos-arts">
+                    <div class="title">
+                        <h3>Sport Recife 120 anos - Home</h3>
+                        <p>Kit que fiz pro meu modo carreira também. Os detalhes pequenos nas faixas vermelhas são seus antigos escudos, relatando a origem do clube.</p>
+                    </div>
+                    <div class="infos">
+                        <p><b>Data: </b>Agosto de 2024</p>
+                        <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                    </div>
+                </div>
+                <img src="./img/projects/projects-arts/design/sport2024mfthird.png" alt="sport-recife-120-years">
+            </a>
+        </div>    
+
+        <div class="h-img section-hidden">
+            <a href="https://www.artstation.com/artwork/6LZ4y5" target="_blank">
+                <div class="infos-arts">
+                    <div class="title">
+                        <h3>Sport Recife 120 anos - Away</h3>
+                        <p>Fiz essa camisa meio beje só para não usar branco. Pra camisa não ficar vazia, coloquei uma xilogravura de Recife em baixo dela.Ná época não tinha tantas habilidades no Photoshop, acredito que hoje conseguiria fazer melhor.</p>
+                    </div>
+                    <div class="infos">
+                        <p><b>Data: </b>Agosto de 2024</p>
+                        <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                    </div>
+                </div>
+                <img src="./img/projects/projects-arts/design/sport2023.png" alt="sport-recife-120-years-away">
+            </a>
+        </div>
+
+        <div class="h-img section-hidden">
             <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
                 <div class="infos-arts">
                     <div class="title">
@@ -1304,38 +1336,6 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
                 <img src="./img/projects/projects-arts/design/sport2024mfaway.png" alt="sport-recife-concept-away">
             </a>
         </div>     
-
-        <div class="h-img section-hidden">
-            <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
-                <div class="infos-arts">
-                    <div class="title">
-                        <h3>Sport Recife Concept Kit - Third</h3>
-                        <p>Nesse aqui quis fazer igual a uma camisa da Alemanha que é toda preta.</p>
-                    </div>
-                    <div class="infos">
-                        <p><b>Data: </b>Julho de 2021</p>
-                        <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
-                    </div>
-                </div>
-                <img src="./img/projects/projects-arts/design/sport2024mfthird.png" alt="sport-recife-concept-third">
-            </a>
-        </div>    
-
-        <div class="h-img section-hidden">
-            <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
-                <div class="infos-arts">
-                    <div class="title">
-                        <h3>Sport Recife Home - 2023</h3>
-                        <p>Uniforme 1 do Sport em 2023.</p>
-                    </div>
-                    <div class="infos">
-                        <p><b>Data: </b>Abril de 2023</p>
-                        <p><b>Ferramentas: </b>Photoshop, Blender</p>
-                    </div>
-                </div>
-                <img src="./img/projects/projects-arts/design/sport2023.png" alt="sport-recife-2023">
-            </a>
-        </div>
         
         <div class="section-hidden">
             <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
@@ -1386,18 +1386,18 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
         </div>                                  
 
         <div class="section-hidden">
-            <a href="https://www.artstation.com/artwork/PX8a0n" target="_blank">
+            <a href="https://www.artstation.com/artwork/AZXbbo" target="_blank">
                 <div class="infos-arts">
                     <div class="title">
-                        <h3>Jogos Internos</h3>
-                        <p>Essas camisas fiz para entrar em uma votação para saber qual seria a camisa do Interclasse da escola. Teria quer te uma preta, azul, vermelha, verde e amarela. Fiz essas camisas na época em que meu PC tinha quebrado, então foi muito perrengue.</p>
+                        <h3>Social Media</h3>
+                        <p>Posto essas artes no Instagram de um servidor de Discord que faço parte. Vou fazendo e apredendo junto.</p>
                     </div>
                     <div class="infos">
-                        <p><b>Data: </b>Agosto de 2021</p>
-                        <p><b>Ferramentas: </b>Photoshop, Pes Master, Blender</p>
+                        <p><b>Data: </b>2025</p>
+                        <p><b>Ferramentas: </b>Photoshop</p>
                     </div>
                 </div>
-                <img src="./img/projects/projects-arts/design/sesi.gif" alt="sesi">
+                <img src="./img/projects/projects-arts/design/socialmedia.jpg" alt="sesi">
             </a>
         </div>  
 
