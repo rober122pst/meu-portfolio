@@ -596,6 +596,57 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
 </div>
 
 <div class="section-hidden">
+    <a href="https://www.artstation.com/artwork/39A2bD" target="_blank">
+        <div class="infos-arts">
+            <div class="title">
+                <h3>Mbappe</h3>
+                <p>I used the pixel art technique to make this drawing. My biggest challenge was getting his haircut right.</p>
+            </div>
+            <div class="infos">
+                <p><b>Date: </b>2022</p>
+                <p><b>Dimensions: </b>A4 Paper</p>
+                <p><b>Tools: </b>Graphite, Blending Stump</p>
+            </div>
+        </div>
+        <img src="./img/projects/projects-arts/desenhos-tradicionais/mbappe.jpg" alt="mbappe">
+    </a>
+</div>
+
+<div class="v-img section-hidden">
+    <div>
+        <div class="infos-arts">
+            <div class="title">
+                <h3>Durval</h3>
+                <p>Seu Durval, a Sport Recife legend.</p>
+            </div>
+            <div class="infos">
+                <p><b>Date: </b>2017</p>
+                <p><b>Dimensions: </b>A4 Paper</p>
+                <p><b>Tools: </b>Graphite, Blending Stump</p>
+            </div>
+        </div>
+        <img src="./img/projects/projects-arts/desenhos-tradicionais/durval.jpg" alt="durval">
+    </div>
+</div>
+
+<div class="section-hidden">
+    <div>
+        <div class="infos-arts">
+            <div class="title">
+                <h3>Nick</h3>
+                <p>I never finished this drawing and can’t complete it because I lost the image. It’s a drawing of my late dog, which is why I cherish it so much.</p>
+            </div>
+            <div class="infos">
+                <p><b>Date: </b>2017</p>
+                <p><b>Dimensions: </b>A4 Paper</p>
+                <p><b>Ferramentas: </b>Graphite, Blending Stump</p>
+            </div>
+        </div>
+        <img src="./img/projects/projects-arts/desenhos-tradicionais/nick.jpg" alt="sport-recife">
+    </div>
+</div>
+
+<div class="section-hidden">
 <a href="https://www.artstation.com/artwork/04AQEe" target="_blank">
     <div class="infos-arts">
         <div class="title">

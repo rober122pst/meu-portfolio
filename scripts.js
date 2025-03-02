@@ -1006,7 +1006,7 @@ window.projectsArtsHtml = `<div class="swiper mySwiper section-hidden swiper-ini
                 <div class="infos-arts">
                     <div class="title">
                         <h3>Durval</h3>
-                        <p>Fiz da mesma forma que o Magrão.</p>
+                        <p>Seu Durval, ídolo do Sport.</p>
                     </div>
                     <div class="infos">
                         <p><b>Data: </b>2017</p>
